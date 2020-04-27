@@ -13,7 +13,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        Button btn = (Button) findViewById(R.id.push_button14);
+        btn.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v)
+            {
+                openBBC();
+            }
+
+        });
     }
+
 
     public void openBBC(){
         Intent intent = new Intent(this, BasicBusiness.class);
