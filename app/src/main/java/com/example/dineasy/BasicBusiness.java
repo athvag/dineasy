@@ -23,24 +23,10 @@ public class BasicBusiness extends AppCompatActivity {
             }
 
         });
-        Button btn2 = (Button) findViewById(R.id.push_button5);
-        btn.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v)
-            {
-                openBBC2();
-            }
-
-        });
     }
 
     public void openBBC(){
         Intent intent = new Intent(this, BusinessCreation.class);
-        startActivity(intent);
-    }
-    public void openBBC2(){
-        Intent intent = new Intent(this, ManageBusiness.class);
         startActivity(intent);
     }
 
