@@ -18,18 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar6"
-                android:layout_width="408dp"
-                android:layout_height="71dp"
-                android:background="#A679EAFA"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.25"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="184dp"
@@ -220,13 +208,14 @@
                 android:layout_height="43dp"
                 android:layout_marginStart="50dp"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="92dp"
+                android:layout_marginTop="72dp"
                 android:layout_marginEnd="50dp"
                 android:layout_marginRight="50dp"
                 android:text="Δημιουργία Καταστήματος"
                 android:textColor="#020101"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.461"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
