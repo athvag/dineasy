@@ -23,11 +23,26 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+        Button btn2 = (Button) findViewById(R.id.push_button12);
+        btn2.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v)
+            {
+                openBBC2();
+            }
+
+        });
     }
 
 
     public void openBBC(){
         Intent intent = new Intent(this, BasicBusiness.class);
+        startActivity(intent);
+    }
+
+    public void openBBC2(){
+        Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
 
