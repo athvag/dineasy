@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/dineasyic_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ManageBusiness"></activity>
+        <activity android:name=".Login"></activity>
+        <activity android:name=".ManageBusiness" />
         <activity android:name=".Example" />
         <activity android:name=".BusinessCreation2" />
         <activity android:name=".BusinessCreation" />
