@@ -1,2 +1,5 @@
-<img src="dineasygithub.png" align="center" alt="Kitten"
-	title="Logo" width="540" height="615" />
+
+<center>
+    <img src="dineasygithub.png" alt="centered image" />
+</center>
+
