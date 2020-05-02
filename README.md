@@ -1,2 +1,2 @@
 <img src="dineasygithub.png" alt="Kitten"
-	title="A cute kitten" width="150" height="100" />
+	title="Logo" width="540" height="615" />
