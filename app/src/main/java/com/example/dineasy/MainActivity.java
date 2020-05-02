@@ -33,6 +33,16 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+        Button btn3 = (Button) findViewById(R.id.push_button15);
+        btn3.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v)
+            {
+                openBBC3();
+            }
+
+        });
     }
 
 
@@ -43,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void openBBC2(){
         Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+    }
+    public void openBBC3(){
+        Intent intent = new Intent(this, Signup.class);
         startActivity(intent);
     }
 
