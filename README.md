@@ -1,1 +1,1 @@
-![Logo](dineasygithub.png =250px)
+![Logo](dineasygithub.png)
