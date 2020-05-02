@@ -1,1 +1,1 @@
-![Logo](dineasygithub.png)
+![Logo,40%](dineasygithub.png)
