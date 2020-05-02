@@ -52,7 +52,7 @@
         android:background="#11000000"
         android:drawableLeft="@drawable/ic_person_black_24dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Όνομα Χρήστη/E-mail"
         android:inputType="textPersonName"
         android:textSize="16dp" />
 
@@ -73,7 +73,7 @@
         android:background="#11000000"
         android:drawableLeft="@drawable/ic_lock_idle_lock"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Κωδικός"
         android:inputType="textPassword" />
 
 </RelativeLayout>
