@@ -50,10 +50,12 @@
         android:layout_width="37dp"
         android:layout_height="45dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:background="#00FF0000"
         android:tint="@android:color/primary_text_light_nodisable"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_account_box_black_24dp"
-        tools:layout_editor_absoluteX="360dp" />
+        app:srcCompat="@drawable/ic_account_box_black_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
