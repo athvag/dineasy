@@ -25,24 +25,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.306" />
 
-    <Button
-        android:id="@+id/button_logout"
-        android:layout_width="135dp"
-        android:onClick="logout"
-        android:layout_height="47dp"
-        android:background="@drawable/rounded_button"
-        android:padding="15dp"
-        android:stateListAnimator="@null"
-        android:text="Logout"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.761" />
+
 
     <Button
         android:id="@+id/scan_button"
@@ -67,6 +50,7 @@
 
     <ImageButton
         android:id="@+id/imageButton"
+        android:onClick="showPopup"
         android:layout_width="37dp"
         android:layout_height="45dp"
         android:layout_marginTop="16dp"
