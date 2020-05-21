@@ -11,22 +11,24 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class Login extends AppCompatActivity {
-    private EditText Name;
+    private EditText username;
     private EditText Password;
     private Button Login;
     private TextView Info;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login2);
-        Name = (EditText) findViewById(R.id.username);
+        username = (EditText) findViewById(R.id.username);
         Password = (EditText) findViewById(R.id.password);
         Login = (Button) findViewById(R.id.push_button13);
         Info = (TextView) findViewById(R.id.textError);
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
            public void onClick(View v) {
-                validate(Name.getText().toString(),Password.getText().toString());
+                validate(username.getText().toString(),Password.getText().toString());
            }
       });
     }

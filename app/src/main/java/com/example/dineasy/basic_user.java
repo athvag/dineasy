@@ -75,7 +75,7 @@ public class basic_user extends AppCompatActivity implements PopupMenu.OnMenuIte
     }
 
     private void moveToMainScreen() {
-        Intent intent = new Intent(basic_user.this,Login.class);
+        Intent intent = new Intent(basic_user.this,MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
