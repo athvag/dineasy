@@ -59,10 +59,7 @@ public class basic_user extends AppCompatActivity implements PopupMenu.OnMenuIte
             Intent intent = new Intent(basic_user.this, basic_user.class);
             startActivity(intent);
         }}
-        else{
-            Intent intent = new Intent(basic_user.this, basic_user.class);
-            startActivity(intent);
-        }
+
 
         super.onActivityResult(requestCode, resultCode, data);
     }
