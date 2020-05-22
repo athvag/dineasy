@@ -20,6 +20,8 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class basic_user extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
+    int k=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,14 +29,12 @@ public class basic_user extends AppCompatActivity implements PopupMenu.OnMenuIte
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);
     }
     public void scanButton(View view){
-        IntentIntegrator intentIntegrator = new IntentIntegrator(this);
+       /* IntentIntegrator intentIntegrator = new IntentIntegrator(this);
         intentIntegrator.setPrompt("Scan the table's barcode");
         intentIntegrator.setOrientationLocked(false);
         intentIntegrator.setBeepEnabled(false);
-        intentIntegrator.initiateScan();
-
-
-
+        intentIntegrator.initiateScan(); */
+        setContentView(R.layout.basic_user_after_qr);
     }
 
     @Override
@@ -49,26 +49,22 @@ public class basic_user extends AppCompatActivity implements PopupMenu.OnMenuIte
 
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         String scanContent = scanningResult.getContents();
-        if(scanContent != null){
-        if(scanContent.equals ("1234")){
+        if(scanContent == null){
+        //if(scanContent.equals ("1234")){
 
-               Intent intent = new Intent(basic_user.this, basic_user_after_qr.class);
-               startActivity(intent);
+              // Intent intent = new Intent(basic_user.this, basic_user_after_qr.class);
+               //startActivity(intent);
+            setContentView(R.layout.basic_user_after_qr);
+
            }
         else{
-            Intent intent = new Intent(basic_user.this, basic_user.class);
-            startActivity(intent);
-        }}
+            setContentView(R.layout.basic_user);
+            //Intent intent = new Intent(basic_user.this, basic_user.class);
+            //startActivity(intent);
+        }
 
 
         super.onActivityResult(requestCode, resultCode, data);
-    }
-    public void logout(View view){
-        //this method will remove session and open login screen
-        SessionManagement sessionManagement = new SessionManagement(basic_user.this);
-        sessionManagement.removeSession();
-
-        moveToMainScreen();
     }
 
     private void moveToMainScreen() {
@@ -95,4 +91,6 @@ public class basic_user extends AppCompatActivity implements PopupMenu.OnMenuIte
                 return false;
         }
     }
+
+
 }

@@ -48,7 +48,12 @@ public class Login extends AppCompatActivity {
         int userID = sessionManagement.getSession();
         if(userID != -1){
             //user is logged in and move to next
-            moveToNextActivity();
+            if (userID ==1) {
+                moveToNextActivity();
+            }
+            else {
+                moveToNextActivity2();
+            }
         }
         else{
             //do nothing
@@ -61,15 +66,28 @@ public class Login extends AppCompatActivity {
             sessionManagement.saveSession(user);
             //2
             moveToNextActivity();
-      } else {
+      }
+        else if((username.equals ("user")) && (password.equals  ("1234"))){
+            user user = new user(2,"temp");
+            SessionManagement sessionManagement = new SessionManagement(Login.this);
+            sessionManagement.saveSession(user);
+            //2
+            moveToNextActivity2(); }
+
+        else {
        Info.setText("Λαθος Όνομα Χρήστη/Κωδικός.");
         }
     }
 
+    private void moveToNextActivity2() {
+        Intent intent = new Intent(Login.this,basic_user.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
 
 
     private void moveToNextActivity() {
-        Intent intent = new Intent(Login.this,basic_user.class);
+        Intent intent = new Intent(Login.this,BasicBusiness.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
