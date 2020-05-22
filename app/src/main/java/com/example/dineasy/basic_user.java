@@ -108,7 +108,7 @@ public class basic_user extends AppCompatActivity implements PopupMenu.OnMenuIte
                                 @Override
                                 public void onClick(View v) {
                                     final EditText username,phone;
-                                    setContentView(R.layout.profile);
+                                    setContentView(R.layout.profile2);
                                     username = (EditText) findViewById(R.id.username2);
                                     phone = (EditText) findViewById(R.id.phone);
                                     Button btn3 = (Button) findViewById(R.id.push_button8);
