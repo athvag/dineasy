@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void openBBC(){
-        Intent intent = new Intent(this, BusinessCreation.class);
+        Intent intent = new Intent(this, BasicBusiness.class);
         startActivity(intent);
     }
 
