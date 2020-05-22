@@ -133,6 +133,7 @@ public class basic_user extends AppCompatActivity implements PopupMenu.OnMenuIte
     }
 
     public void setName(String name){
-        user.username = name;
+        SessionManagement sessionManagement = new SessionManagement(basic_user.this);
+        sessionManagement.setSESname(name);
     }
 }

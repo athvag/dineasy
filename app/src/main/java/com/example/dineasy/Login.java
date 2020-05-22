@@ -83,7 +83,8 @@ public class Login  extends AppCompatActivity {
     private void moveToNextActivity2() {
         Intent intent = new Intent(Login.this,basic_user.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        String username=getName();
+        SessionManagement sessionManagement = new SessionManagement(Login.this);
+        String username= sessionManagement.getSESname();
         intent.putExtra("Username",username);
         startActivity(intent);
     }

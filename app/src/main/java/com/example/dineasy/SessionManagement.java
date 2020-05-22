@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 public class SessionManagement {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    String SESname = "USER";
     String SHARED_PREF_NAME="session";
     String SESSION_KEY = "session_user";
     public SessionManagement(Context context){
@@ -15,6 +16,8 @@ public class SessionManagement {
     public void saveSession(user user){
         //save session of user whenever user is logged in
     int id = user.getId();
+    String uname = user.getName();
+    editor.putString(SESname,uname).commit();
     editor.putInt(SESSION_KEY,id).commit();
     }
     public int getSession(){
@@ -22,6 +25,12 @@ public class SessionManagement {
     return sharedPreferences.getInt(SESSION_KEY,-1);
     }
 
+    public String getSESname(){
+        return sharedPreferences.getString(SESname,"");
+    }
+    public void setSESname(String name){
+        editor.putString(SESname,name).commit();
+    }
     public void removeSession(){
         editor.putInt(SESSION_KEY, -1).commit();
     }
