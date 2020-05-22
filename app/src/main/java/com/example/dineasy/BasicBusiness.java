@@ -8,10 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class BasicBusiness extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+    private TextView currentuser;
     int k = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +92,12 @@ public class BasicBusiness extends AppCompatActivity implements PopupMenu.OnMenu
                 SessionManagement sessionManagement = new SessionManagement(BasicBusiness.this);
                 sessionManagement.removeSession();
                 moveToMainScreen();
+            case R.id.item3:
+                setContentView(R.layout.profile);
+                currentuser = findViewById(R.id.username);
+                Bundle extras = getIntent().getExtras();
+                String username = extras.getString("Username");
+                currentuser.setText(username);
             default:
                 return false;
         }

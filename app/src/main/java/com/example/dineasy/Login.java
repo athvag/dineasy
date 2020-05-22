@@ -71,6 +71,7 @@ public class Login extends AppCompatActivity {
             user user = new user(2,"temp");
             SessionManagement sessionManagement = new SessionManagement(Login.this);
             sessionManagement.saveSession(user);
+
             //2
             moveToNextActivity2(); }
 
@@ -82,6 +83,8 @@ public class Login extends AppCompatActivity {
     private void moveToNextActivity2() {
         Intent intent = new Intent(Login.this,basic_user.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        String username="user";
+        intent.putExtra("Username",username);
         startActivity(intent);
     }
 
@@ -89,6 +92,8 @@ public class Login extends AppCompatActivity {
     private void moveToNextActivity() {
         Intent intent = new Intent(Login.this,BasicBusiness.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        String username="admin";
+        intent.putExtra("Username",username);
         startActivity(intent);
     }
 }

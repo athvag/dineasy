@@ -13,13 +13,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 public class basic_user extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
-
+    private TextView currentuser;
     int k=0;
 
     @Override
@@ -87,6 +88,12 @@ public class basic_user extends AppCompatActivity implements PopupMenu.OnMenuIte
                 SessionManagement sessionManagement = new SessionManagement(basic_user.this);
                 sessionManagement.removeSession();
                 moveToMainScreen();
+            case R.id.item3:
+                setContentView(R.layout.profile);
+                currentuser = findViewById(R.id.username);
+                Bundle extras = getIntent().getExtras();
+                String username = extras.getString("Username");
+                currentuser.setText(username);
             default:
                 return false;
         }
