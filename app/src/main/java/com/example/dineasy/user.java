@@ -3,7 +3,7 @@ package com.example.dineasy;
 public class user {
     int id;
     String email;
-    String username;
+    static String username="User";
     int phone_num;
     int password;
     String Firstname;

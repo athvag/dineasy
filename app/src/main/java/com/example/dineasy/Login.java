@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Login extends AppCompatActivity {
+public class Login  extends AppCompatActivity {
     private EditText username;
     private EditText Password;
     private Button Login;
@@ -83,7 +83,7 @@ public class Login extends AppCompatActivity {
     private void moveToNextActivity2() {
         Intent intent = new Intent(Login.this,basic_user.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        String username="user";
+        String username=getName();
         intent.putExtra("Username",username);
         startActivity(intent);
     }
@@ -95,5 +95,9 @@ public class Login extends AppCompatActivity {
         String username="admin";
         intent.putExtra("Username",username);
         startActivity(intent);
+    }
+
+    public String getName(){
+        return user.username;
     }
 }
