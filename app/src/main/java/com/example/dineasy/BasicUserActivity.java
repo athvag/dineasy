@@ -89,6 +89,7 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
                 SessionManagement sessionManagement = new SessionManagement(BasicUserActivity.this);
                 sessionManagement.removeSession();
                 moveToMainScreen();
+                return false;
             case R.id.item3:
                 setContentView(R.layout.profile);
                 currentuser = findViewById(R.id.username2);
@@ -125,6 +126,7 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
                             });
                         }
                 });
+                return false;
             default:
                 return false;
         }

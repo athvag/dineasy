@@ -93,6 +93,7 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
                 SessionManagement sessionManagement = new SessionManagement(BasicBusinessActivity.this);
                 sessionManagement.removeSession();
                 moveToMainScreen();
+                return false;
             case R.id.item3:
                 setContentView(R.layout.profile);
                 currentuser = findViewById(R.id.username2);
@@ -129,6 +130,7 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
                         });
                     }
                 });
+                return false;
             default:
                 return false;
         }
