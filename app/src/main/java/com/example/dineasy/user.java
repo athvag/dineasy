@@ -4,11 +4,15 @@ public class user {
     int id;
     static String email;
     static String username="User2";
-    int phone_num;
+    static int phone_num;
     static int password;
     String Firstname;
     String Lastname;
 
+    public user(int id, String name) {
+        this.id = id;
+        this.username = name;
+    }
     public user(int id, String email, String name, int pnum, int pwd, String First, String Last) {
         this.id = id;
         this.email= email;
@@ -27,7 +31,7 @@ public class user {
         this.id = id;
     }*/
 
-    public String getUsername() {
+    public static String getUsername() {
         return username;
     }
 
@@ -56,4 +60,8 @@ public class user {
     }
 
     public void checkPassword(){}
+
+
 }
+
+

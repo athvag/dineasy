@@ -4,8 +4,13 @@ public class Login {
     String login_username,login_email;
     int login_password;
 
+    public Login(String lname,int lpass){
+        this.login_username = lname;
+        this.login_password = lpass;
+    }
+
     public String getUsername(){
-        return user.username;
+        return user.getUsername();
     }
 
     public String getEmail(){

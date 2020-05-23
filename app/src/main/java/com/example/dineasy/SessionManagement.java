@@ -17,10 +17,10 @@ public class SessionManagement {
     public void saveSession(user user){
         //save session of user whenever user is logged in
     int id = user.getId();
-    String uname = user.getName();
+    String uname = user.getUsername();
     editor.putString(SESname,uname).commit();
     editor.putInt(SESSION_KEY,id).commit();
-        String username = user.getName();
+        String username = user.getUsername();
         editor.putString(SESSION_USERNAME,username).commit();
     }
     public int getSession(){

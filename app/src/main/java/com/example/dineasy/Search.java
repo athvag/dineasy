@@ -1,6 +1,6 @@
 package com.example.dineasy;
 
-public class Search extends Business
+public class Search
 {
     String location;
     double range;

@@ -5,13 +5,14 @@ import android.widget.Button;
 public class Basic_User extends user {
     String payment_method[];
     Button Search;
-    public Basic_User(int id, String name) {
-        super(id, name);
+
+    public Basic_User(int id, String name,String email,int password,int phone_num, String Firstname, String Lastname) {
+        super(id, name,email, password,phone_num,Firstname,Lastname);
     }
 
-    /*public int searchBusiness(){
-
-    }*/
+    public String[] payment_method(){
+        return payment_method;
+    }
 
     public void onClick(Button Search){}
 
