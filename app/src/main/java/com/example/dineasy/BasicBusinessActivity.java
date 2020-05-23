@@ -102,7 +102,8 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
                 currentuser.setText(extras.getString("Username"));
                 phoneNum.setText(extras.getString("Phone"));
                 Button btn = (Button) findViewById(R.id.push_button8);
-                btn.setOnClickListener(new View.OnClickListener() {
+                btn.setOnClickListener(new View.OnClickListener()
+                {
                     @Override
                     public void onClick(View v) {
                         setContentView(R.layout.passwordcheck);
@@ -124,13 +125,13 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
                                         intent.putExtra("Username",username.getText().toString());
                                         intent.putExtra("Phone",phone.getText().toString());
                                         startActivity(intent);
+
                                     }
                                 });
                             }
                         });
                     }
-                });
-                return false;
+                }); return false;
             default:
                 return false;
         }

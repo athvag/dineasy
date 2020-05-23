@@ -9,6 +9,7 @@ public class SessionManagement {
     String SESname = "USER";
     String SHARED_PREF_NAME="session";
     String SESSION_KEY = "session_user";
+    String SESSION_USERNAME = "session_username";
     public SessionManagement(Context context){
         sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -19,6 +20,8 @@ public class SessionManagement {
     String uname = user.getName();
     editor.putString(SESname,uname).commit();
     editor.putInt(SESSION_KEY,id).commit();
+        String username = user.getName();
+        editor.putString(SESSION_USERNAME,username).commit();
     }
     public int getSession(){
         //return user id whose session is saved
