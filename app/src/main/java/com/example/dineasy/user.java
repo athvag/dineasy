@@ -3,7 +3,7 @@ package com.example.dineasy;
 public class user {
     int id;
     String email;
-    static String username="User";
+    static String username="User2";
     int phone_num;
     int password;
     String Firstname;
@@ -29,4 +29,5 @@ public class user {
     public void setName(String name) {
         this.username = name;
     }
+
 }

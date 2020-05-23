@@ -93,6 +93,7 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
                 SessionManagement sessionManagement = new SessionManagement(BasicBusinessActivity.this);
                 sessionManagement.removeSession();
                 moveToMainScreen();
+                return false;
             case R.id.item3:
                 setContentView(R.layout.profile);
                 currentuser = findViewById(R.id.username2);
@@ -101,7 +102,8 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
                 currentuser.setText(extras.getString("Username"));
                 phoneNum.setText(extras.getString("Phone"));
                 Button btn = (Button) findViewById(R.id.push_button8);
-                btn.setOnClickListener(new View.OnClickListener() {
+                btn.setOnClickListener(new View.OnClickListener()
+                {
                     @Override
                     public void onClick(View v) {
                         setContentView(R.layout.passwordcheck);
@@ -123,12 +125,13 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
                                         intent.putExtra("Username",username.getText().toString());
                                         intent.putExtra("Phone",phone.getText().toString());
                                         startActivity(intent);
+
                                     }
                                 });
                             }
                         });
                     }
-                });
+                }); return false;
             default:
                 return false;
         }

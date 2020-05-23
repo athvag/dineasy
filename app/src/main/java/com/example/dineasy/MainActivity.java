@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     public void openBBC(){
         Intent intent = new Intent(this, BasicBusinessActivity.class);
         startActivity(intent);
