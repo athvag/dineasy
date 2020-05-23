@@ -92,7 +92,8 @@ public class LoginActivity extends AppCompatActivity {
     private void moveToNextActivity() {
         Intent intent = new Intent(LoginActivity.this, BasicBusinessActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        String username="admin";
+        SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
+        String username= sessionManagement.getSESname();
         intent.putExtra("Username",username);
         startActivity(intent);
     }
