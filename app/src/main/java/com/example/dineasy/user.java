@@ -2,10 +2,10 @@ package com.example.dineasy;
 
 public class user {
     int id;
-    String email;
+    static String email;
     static String username="User2";
     int phone_num;
-    int password;
+    static int password;
     String Firstname;
     String Lastname;
 
@@ -18,16 +18,37 @@ public class user {
         return id;
     }
 
-    public void setId(int id) {
+    /*public void setId(int id) {
         this.id = id;
-    }
+    }*/
 
-    public String getName() {
+    public String getUsername() {
         return username;
     }
 
-    public void setName(String name) {
+    /*public void setName(String name) {
         this.username = name;
+    }*/
+
+    public String getEmail(){
+        return email;
     }
 
+    public int getPassword(){
+        return password;
+    }
+
+    public int getPhone(){
+        return phone_num;
+    }
+
+    public void setEmail(String email){
+        user.email = email;
+    }
+
+    public void setPhone(int PhNum){
+        this.phone_num = PhNum;
+    }
+
+    public void checkPassword(){}
 }
