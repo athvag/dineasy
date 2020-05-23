@@ -7,13 +7,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class BasicBusiness extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
-    private TextView currentuser;
+public class BasicBusinessActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+    private TextView currentuser,phoneNum;
     int k = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,7 @@ public class BasicBusiness extends AppCompatActivity implements PopupMenu.OnMenu
 
 
     private void moveToMainScreen() {
-        Intent intent = new Intent(BasicBusiness.this,MainActivity.class);
+        Intent intent = new Intent(BasicBusinessActivity.this,MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
@@ -89,18 +90,52 @@ public class BasicBusiness extends AppCompatActivity implements PopupMenu.OnMenu
     public boolean onMenuItemClick(MenuItem item) {
         switch(item.getItemId()){
             case R.id.item1:
-                SessionManagement sessionManagement = new SessionManagement(BasicBusiness.this);
+                SessionManagement sessionManagement = new SessionManagement(BasicBusinessActivity.this);
                 sessionManagement.removeSession();
                 moveToMainScreen();
             case R.id.item3:
                 setContentView(R.layout.profile);
-                currentuser = findViewById(R.id.username);
+                currentuser = findViewById(R.id.username2);
+                phoneNum = findViewById(R.id.phone);
                 Bundle extras = getIntent().getExtras();
-                String username = extras.getString("Username");
-                currentuser.setText(username);
+                currentuser.setText(extras.getString("Username"));
+                phoneNum.setText(extras.getString("Phone"));
+                Button btn = (Button) findViewById(R.id.push_button8);
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        setContentView(R.layout.passwordcheck);
+                        Button btn2 = (Button) findViewById(R.id.push_button16);
+                        btn2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                final EditText username,phone;
+                                setContentView(R.layout.profile2);
+                                username = (EditText) findViewById(R.id.username2);
+                                phone = (EditText) findViewById(R.id.phone);
+                                Button btn3 = (Button) findViewById(R.id.push_button8);
+                                btn3.setOnClickListener(new View.OnClickListener(){
+                                    @Override
+                                    public void onClick(View v) {
+                                        finish();
+                                        Intent intent = new Intent(BasicBusinessActivity.this, BasicUserActivity.class);
+                                        setName(username.getText().toString());
+                                        intent.putExtra("Username",username.getText().toString());
+                                        intent.putExtra("Phone",phone.getText().toString());
+                                        startActivity(intent);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
             default:
                 return false;
         }
     }
 
+    public void setName(String name){
+        SessionManagement sessionManagement = new SessionManagement(BasicBusinessActivity.this);
+        sessionManagement.setSESname(name);
+    }
 }

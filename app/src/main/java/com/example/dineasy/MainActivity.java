@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,16 +51,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void openBBC(){
-        Intent intent = new Intent(this, BasicBusiness.class);
+        Intent intent = new Intent(this, BasicBusinessActivity.class);
         startActivity(intent);
     }
 
     public void openBBC2(){
-        Intent intent = new Intent(this, Login.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
     public void openBBC3(){
-        Intent intent = new Intent(this, Signup.class);
+        Intent intent = new Intent(this, SignupActivity.class);
         startActivity(intent);
     }
 

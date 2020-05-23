@@ -12,13 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".basic_user" />
-        <activity android:name="com.journeyapps.barcodescanner.CaptureActivity"
+        <activity android:name=".BasicUserActivity" />
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="portrait"
-            tools:replace="screenOrientation"/>
-        <activity android:name=".Signup" />
-        <activity android:name=".Login" />
-        <activity android:name=".BasicBusiness" />
+            tools:replace="screenOrientation" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".BasicBusinessActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

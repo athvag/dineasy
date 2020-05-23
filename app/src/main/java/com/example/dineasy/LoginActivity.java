@@ -4,13 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.se.omapi.Session;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Login  extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private EditText username;
     private EditText Password;
     private Button Login;
@@ -44,7 +43,7 @@ public class Login  extends AppCompatActivity {
     private void checkSession() {
         //check if user is logged in
         //if user is logged in move to basic user
-        SessionManagement sessionManagement = new SessionManagement(Login.this);
+        SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
         int userID = sessionManagement.getSession();
         if(userID != -1){
             //user is logged in and move to next
@@ -62,14 +61,14 @@ public class Login  extends AppCompatActivity {
    private void validate(String username, String password){
         if((username.equals ("admin")) && (password.equals  ("1234"))){
             user user = new user(1,"temp");
-            SessionManagement sessionManagement = new SessionManagement(Login.this);
+            SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
             sessionManagement.saveSession(user);
             //2
             moveToNextActivity();
       }
         else if((username.equals ("user")) && (password.equals  ("1234"))){
             user user = new user(2,"temp");
-            SessionManagement sessionManagement = new SessionManagement(Login.this);
+            SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
             sessionManagement.saveSession(user);
 
             //2
@@ -81,9 +80,9 @@ public class Login  extends AppCompatActivity {
     }
 
     private void moveToNextActivity2() {
-        Intent intent = new Intent(Login.this,basic_user.class);
+        Intent intent = new Intent(LoginActivity.this, BasicUserActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        SessionManagement sessionManagement = new SessionManagement(Login.this);
+        SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
         String username= sessionManagement.getSESname();
         intent.putExtra("Username",username);
         startActivity(intent);
@@ -91,7 +90,7 @@ public class Login  extends AppCompatActivity {
 
 
     private void moveToNextActivity() {
-        Intent intent = new Intent(Login.this,BasicBusiness.class);
+        Intent intent = new Intent(LoginActivity.this, BasicBusinessActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         String username="admin";
         intent.putExtra("Username",username);

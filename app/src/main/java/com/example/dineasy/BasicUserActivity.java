@@ -16,12 +16,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-public class basic_user extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class BasicUserActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private TextView currentuser,phoneNum;
     int k=0;
 
@@ -71,7 +70,7 @@ public class basic_user extends AppCompatActivity implements PopupMenu.OnMenuIte
     }
 
     private void moveToMainScreen() {
-        Intent intent = new Intent(basic_user.this,MainActivity.class);
+        Intent intent = new Intent(BasicUserActivity.this,MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
@@ -87,11 +86,10 @@ public class basic_user extends AppCompatActivity implements PopupMenu.OnMenuIte
     public boolean onMenuItemClick(final MenuItem item) {
         switch(item.getItemId()){
             case R.id.item1:
-                SessionManagement sessionManagement = new SessionManagement(basic_user.this);
+                SessionManagement sessionManagement = new SessionManagement(BasicUserActivity.this);
                 sessionManagement.removeSession();
                 moveToMainScreen();
             case R.id.item3:
-                final int[] flag = new int[1];
                 setContentView(R.layout.profile);
                 currentuser = findViewById(R.id.username2);
                 phoneNum = findViewById(R.id.phone);
@@ -116,7 +114,7 @@ public class basic_user extends AppCompatActivity implements PopupMenu.OnMenuIte
                                         @Override
                                         public void onClick(View v) {
                                             finish();
-                                            Intent intent = new Intent(basic_user.this,basic_user.class);
+                                            Intent intent = new Intent(BasicUserActivity.this, BasicUserActivity.class);
                                             setName(username.getText().toString());
                                             intent.putExtra("Username",username.getText().toString());
                                             intent.putExtra("Phone",phone.getText().toString());
@@ -133,7 +131,7 @@ public class basic_user extends AppCompatActivity implements PopupMenu.OnMenuIte
     }
 
     public void setName(String name){
-        SessionManagement sessionManagement = new SessionManagement(basic_user.this);
+        SessionManagement sessionManagement = new SessionManagement(BasicUserActivity.this);
         sessionManagement.setSESname(name);
     }
 }
