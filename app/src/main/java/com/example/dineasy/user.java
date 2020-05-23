@@ -9,9 +9,14 @@ public class user {
     String Firstname;
     String Lastname;
 
-    public user(int id, String name) {
+    public user(int id, String email, String name, int pnum, int pwd, String First, String Last) {
         this.id = id;
+        this.email= email;
         this.username = name;
+        this.phone_num = pnum;
+        this.password = pwd;
+        this.Firstname = First;
+        this.Lastname = Last;
     }
 
     public int getId() {
