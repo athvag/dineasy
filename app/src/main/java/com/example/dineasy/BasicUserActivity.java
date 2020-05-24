@@ -16,13 +16,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 public class BasicUserActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private TextView currentuser,phoneNum;
-    int k=0;
+    int n=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
         intentIntegrator.setBeepEnabled(false);
         intentIntegrator.initiateScan(); */
         setContentView(R.layout.basic_user_after_qr);
+        n=2;
     }
 
     @Override
@@ -56,11 +58,15 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
 
               // Intent intent = new Intent(basic_user.this, basic_user_after_qr.class);
                //startActivity(intent);
+
             setContentView(R.layout.basic_user_after_qr);
+
 
            }
         else{
+            n=1;
             setContentView(R.layout.basic_user);
+
             //Intent intent = new Intent(basic_user.this, basic_user.class);
             //startActivity(intent);
         }
@@ -68,7 +74,19 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+    @Override
+    public void onBackPressed() {
+        if (n == 1) {
 
+            Toast.makeText(BasicUserActivity.this,"Επιλέξτε Αποσύνδεση για να επιστρεψετε στην αρχική οθόνη", Toast.LENGTH_LONG).show();
+
+        }else if(n == 2){
+            n = 1;
+            setContentView(R.layout.basic_user);
+
+        }
+
+    }
     private void moveToMainScreen() {
         Intent intent = new Intent(BasicUserActivity.this,MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);

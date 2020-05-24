@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -50,6 +51,7 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
         });
     }
 
+    @Override
     public void onBackPressed() {
         if (k == 1 || k == 2) {
             k = 0;
@@ -60,9 +62,11 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
             setContentView(R.layout.basic_business_creation);
         }
         else {
-            super.onBackPressed();
+
+                Toast.makeText(BasicBusinessActivity.this,"Επιλέξτε Αποσύνδεση για να επιστρεψετε στην αρχική οθόνη", Toast.LENGTH_LONG).show();
+            }
         }
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
