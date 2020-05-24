@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/MenuHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Menu"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Coffee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Καφέδες"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MenuHeader" />
+
+    <TextView
+        android:id="@+id/Freddo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="156dp"
+        android:text="Freddo Espresso"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/coffePrice"
+        app:layout_constraintHorizontal_bias="0.207"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/coffePrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
+        android:text="3.00€"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/coffeeAdd"
+        app:layout_constraintTop_toBottomOf="@+id/Coffee" />
+
+    <Button
+        android:id="@+id/coffeeAdd"
+        android:layout_width="74dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="add_to_list"
+        android:text="Προσθήκη"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Salad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Σαλάτες"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coffePrice" />
+
+    <TextView
+        android:id="@+id/SaladPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
+        android:text="6.00€"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/saladAdd"
+        app:layout_constraintTop_toBottomOf="@+id/Salad" />
+
+    <TextView
+        android:id="@+id/Ceasars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:text="Ceasar's Salad"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/SaladPrice"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Freddo" />
+
+    <Button
+        android:id="@+id/saladAdd"
+        android:layout_width="74dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="add_to_list"
+        android:text="Προσθήκη"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coffeeAdd" />
+
+    <TextView
+        android:id="@+id/Pizza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Πίτσες"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SaladPrice" />
+
+    <Button
+        android:id="@+id/pizzaAdd"
+        android:layout_width="74dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="add_to_list"
+        android:text="Προσθήκη"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saladAdd" />
+
+    <TextView
+        android:id="@+id/PizzaName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Του μερακλή"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/PizzaPrice"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Ceasars" />
+
+    <TextView
+        android:id="@+id/PizzaPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
+        android:text="12.00€"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/pizzaAdd"
+        app:layout_constraintTop_toBottomOf="@+id/Pizza" />
+
+    <TextView
+        android:id="@+id/Beverages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Αναψυκτικά"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PizzaPrice" />
+
+    <TextView
+        android:id="@+id/bevPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
+        android:text="1.50€"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/bevAdd"
+        app:layout_constraintTop_toBottomOf="@+id/Beverages" />
+
+    <TextView
+        android:id="@+id/bevName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:text="Coca Cola"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bevPrice"
+        app:layout_constraintHorizontal_bias="0.132"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PizzaName"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/bevAdd"
+        android:layout_width="74dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="add_to_list"
+        android:text="Προσθήκη"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pizzaAdd" />
+
+    <Button
+        android:id="@+id/OrderAdd"
+        android:layout_width="74dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="placeOrder"
+        android:text="Παραγγελία"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bevPrice"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
