@@ -93,6 +93,12 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
         startActivity(intent);
     }
 
+    public void moveToOrder(View view) {
+        Intent intent = new Intent(BasicUserActivity.this, Order.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
     public void showPopup(View view) {
         PopupMenu popup = new PopupMenu(this, view);
         popup.setOnMenuItemClickListener(this);

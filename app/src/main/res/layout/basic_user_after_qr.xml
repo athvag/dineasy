@@ -115,6 +115,7 @@
                 android:padding="15dp"
                 android:stateListAnimator="@null"
                 android:text="Παραγγελία"
+                android:onClick="moveToOrder"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
