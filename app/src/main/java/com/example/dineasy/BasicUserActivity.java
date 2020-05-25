@@ -24,6 +24,11 @@ import com.google.zxing.integration.android.IntentResult;
 public class BasicUserActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private TextView currentuser,phoneNum;
     int n=1;
+    Button coffeeButton,saladButton,pizzaButton,bevButton;
+    String choices = "";
+    String indPrice = "";
+    double price = 0.00;
+    private Bundle savedInstanceState1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,11 +98,7 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
         startActivity(intent);
     }
 
-    public void moveToOrder(View view) {
-        Intent intent = new Intent(BasicUserActivity.this, Order.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
+
 
     public void showPopup(View view) {
         PopupMenu popup = new PopupMenu(this, view);
@@ -159,5 +160,50 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
     public void setName(String name){
         SessionManagement sessionManagement = new SessionManagement(BasicUserActivity.this);
         sessionManagement.setSESname(name);
+    }
+    //PARAGGELIA//
+
+    public void moveToOrder(View view) {
+        setContentView(R.layout.order);
+        coffeeButton = (Button) findViewById(R.id.coffeeAdd);
+        saladButton = (Button) findViewById(R.id.saladAdd);
+        pizzaButton = (Button) findViewById(R.id.pizzaAdd);
+        bevButton = (Button) findViewById(R.id.bevAdd);
+    }
+
+    public void add_to_list(View view){
+        if (view == findViewById(R.id.coffeeAdd)){
+            choices = choices + "Freddo Espresso"+"\n";
+            indPrice = indPrice + "3.00 €" + "\n";
+            price = price + 3;
+
+        }
+        else if (view == findViewById(R.id.saladAdd)){
+            choices = choices + "Ceasar's Salad"+"\n";
+            indPrice = indPrice + "6.00 €" + "\n";
+            price = price + 6;
+
+        }
+        else if (view == findViewById(R.id.pizzaAdd)){
+            choices = choices + "Του μερακλή"+"\n";
+            indPrice = indPrice + "12.00 €" + "\n";
+            price = price + 12;
+
+        }
+        else if (view == findViewById(R.id.bevAdd)){
+            choices = choices + "Coca Cola" +"\n";
+            indPrice = indPrice + "1.50 €" + "\n";
+            price = price + 1.5;
+
+        }
+    }
+    public void placeOrder(View view){
+        Intent i = new Intent(BasicUserActivity.this,OrderDetails.class);
+        Bundle bundle = new Bundle ();
+        bundle.putString("indPrice",indPrice);
+        bundle.putString("choices",choices);
+        bundle.putDouble("price",price);
+        i.putExtras(bundle);
+        startActivity(i);
     }
 }
