@@ -90,6 +90,11 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
             setContentView(R.layout.basic_user);
 
         }
+        else if(n == 3){
+            n = 2;
+            setContentView(R.layout.basic_user_after_qr);
+
+        }
 
     }
     private void moveToMainScreen() {
@@ -164,6 +169,7 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
     //PARAGGELIA//
 
     public void moveToOrder(View view) {
+        n=3;
         setContentView(R.layout.order);
         coffeeButton = (Button) findViewById(R.id.coffeeAdd);
         saladButton = (Button) findViewById(R.id.saladAdd);
