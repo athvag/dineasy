@@ -17,7 +17,7 @@ public class Order extends  Tables {
     }
 
     public String getUsername(){
-        return Basic_User.getUsername();
+        return user.getUsername();
     }
 
     public void placeOrder(){}
