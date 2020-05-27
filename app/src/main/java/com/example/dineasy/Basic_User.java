@@ -16,9 +16,9 @@ public class Basic_User extends user {
 
     public void onClick(Button Search){}
 
-    public void scanQR(){ }
+    public void scanQR(){}
 
-    public void getCard(){ }
+    public void getCard(){}
 
     public void selectCard(){}
 
