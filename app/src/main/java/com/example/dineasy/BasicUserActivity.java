@@ -21,8 +21,12 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.util.ArrayList;
+
 public class BasicUserActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private TextView currentuser,phoneNum;
+    com.example.dineasy.Menu m = new com.example.dineasy.Menu(3,"1234","as",1234,123,"12","12",12,"12","12",12,"12",12,"12","12",12);
+    ArrayList<String> me = m.getList();
     int n=1;
     Button coffeeButton,saladButton,pizzaButton,bevButton;
     String choices = "";
@@ -179,25 +183,25 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
 
     public void add_to_list(View view){
         if (view == findViewById(R.id.coffeeAdd)){
-            choices = choices + "Freddo Espresso"+"\n";
+            choices = choices +me.get(0)+"\n";
             indPrice = indPrice + "3.00 €" + "\n";
             price = price + 3;
 
         }
         else if (view == findViewById(R.id.saladAdd)){
-            choices = choices + "Ceasar's Salad"+"\n";
+            choices = choices + me.get(1)+"\n";
             indPrice = indPrice + "6.00 €" + "\n";
             price = price + 6;
 
         }
         else if (view == findViewById(R.id.pizzaAdd)){
-            choices = choices + "Του μερακλή"+"\n";
+            choices = choices + me.get(2)+"\n";
             indPrice = indPrice + "12.00 €" + "\n";
             price = price + 12;
 
         }
         else if (view == findViewById(R.id.bevAdd)){
-            choices = choices + "Coca Cola" +"\n";
+            choices = choices + me.get(3) +"\n";
             indPrice = indPrice + "1.50 €" + "\n";
             price = price + 1.5;
 
