@@ -1,6 +1,6 @@
 package com.example.dineasy;
 
-public class Business
+public class Business extends Business_Owner
 {
 
     int bus_id;
@@ -10,8 +10,9 @@ public class Business
     String bus_email;
     double bus_rating;
 
-    public Business (int id, String name, String address, int pnum, String email, double rat)
+    public Business (int bid, String bemail, String busername, int bphone_num, int bpassword, String bFirstname, String bLastname,int id, String name, String address, int pnum, String email, double rat)
     {
+        super(bid,bemail,busername,bphone_num,bpassword,bFirstname,bLastname);
         this.bus_id = id;
         this.bus_name = name;
         this.bus_address = address;

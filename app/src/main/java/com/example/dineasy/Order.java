@@ -5,8 +5,8 @@ public class Order extends  Tables {
     private String order_username,order_time;
     private boolean order_status;
 
-    public Order(int id, String name, String address, int pnum, String email, double rat) {
-        super(id, name, address, pnum, email, rat);
+    public Order(int bid, String bemail, String busername, int bphone_num, int bpassword, String bFirstname, String bLastname,int id, String name, String address, int pnum, String email, double rat) {
+        super(bid,bemail,busername,bphone_num,bpassword,bFirstname,bLastname,id, name, address, pnum, email, rat);
     }
 
     public void setOrderStatus(Boolean status){
@@ -16,7 +16,7 @@ public class Order extends  Tables {
     public void setPaymentPrice(){
     }
 
-    public String getUsername(){
+    public static String getUsername(){
         return user.getUsername();
     }
 
