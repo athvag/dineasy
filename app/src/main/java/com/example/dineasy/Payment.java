@@ -1,9 +1,9 @@
 package com.example.dineasy;
 
 public class Payment extends OrderDetails{
-    int payment_id;
+    static int payment_id;
     String payment_price;
-    boolean payment_status;
+    static boolean payment_status;
 
     public Payment(int id, String price, boolean status)
     {
@@ -12,8 +12,8 @@ public class Payment extends OrderDetails{
         this.payment_status = status;
     }
 
-    public void setPayment_status(boolean status)
+    /*public static void setPayment_status(boolean status)
     {
         this.payment_status = status;
-    }
+    }*/
 }

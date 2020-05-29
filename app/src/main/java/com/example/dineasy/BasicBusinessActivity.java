@@ -96,9 +96,11 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
             case R.id.item1:
                 SessionManagement sessionManagement = new SessionManagement(BasicBusinessActivity.this);
                 sessionManagement.removeSession();
+                k=1;
                 moveToMainScreen();
                 return false;
             case R.id.item3:
+                k=1;
                 setContentView(R.layout.profile);
                 currentuser = findViewById(R.id.username2);
                 phoneNum = findViewById(R.id.phone);
@@ -106,8 +108,7 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
                 currentuser.setText(extras.getString("Username"));
                 phoneNum.setText(extras.getString("Phone"));
                 Button btn = (Button) findViewById(R.id.push_button8);
-                btn.setOnClickListener(new View.OnClickListener()
-                {
+                btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         setContentView(R.layout.passwordcheck);
@@ -124,18 +125,18 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
                                     @Override
                                     public void onClick(View v) {
                                         finish();
-                                        Intent intent = new Intent(BasicBusinessActivity.this, BasicUserActivity.class);
+                                        Intent intent = new Intent(BasicBusinessActivity.this, BasicBusinessActivity.class);
                                         setName(username.getText().toString());
                                         intent.putExtra("Username",username.getText().toString());
                                         intent.putExtra("Phone",phone.getText().toString());
                                         startActivity(intent);
-
                                     }
                                 });
                             }
                         });
                     }
-                }); return false;
+                });
+                return false;
             default:
                 return false;
         }

@@ -43,11 +43,10 @@
                 android:id="@+id/bevName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
-                android:text="Coca Cola"
+                android:layout_marginTop="32dp"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.281"
+                app:layout_constraintHorizontal_bias="0.102"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Beverages" />
 
@@ -68,10 +67,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="1.50€"
+                android:text="3.00€"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.509"
+                app:layout_constraintHorizontal_bias="0.707"
                 app:layout_constraintStart_toEndOf="@+id/Freddo"
                 app:layout_constraintTop_toBottomOf="@+id/Coffee" />
 
@@ -94,7 +93,7 @@
                 android:text="6.00€"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.504"
+                app:layout_constraintHorizontal_bias="0.725"
                 app:layout_constraintStart_toEndOf="@+id/Ceasars"
                 app:layout_constraintTop_toBottomOf="@+id/Salad" />
 
@@ -114,11 +113,11 @@
                 android:id="@+id/coffePrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
-                android:text="3.00€"
+                android:layout_marginTop="32dp"
+                android:text="1.50€"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.509"
+                app:layout_constraintHorizontal_bias="0.725"
                 app:layout_constraintStart_toEndOf="@+id/bevName"
                 app:layout_constraintTop_toBottomOf="@+id/Beverages" />
 
@@ -127,10 +126,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="Ceasar's Salad"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.222"
+                app:layout_constraintHorizontal_bias="0.102"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Salad" />
 
@@ -138,11 +136,10 @@
                 android:id="@+id/PizzaName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
-                android:text="Του μερακλή"
+                android:layout_marginTop="32dp"
                 android:textSize="15dp"
-                app:layout_constraintEnd_toStartOf="@+id/PizzaPrice"
-                app:layout_constraintHorizontal_bias="0.414"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.102"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Pizza" />
 
@@ -150,12 +147,12 @@
                 android:id="@+id/PizzaPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
-                android:layout_marginEnd="92dp"
-                android:layout_marginRight="92dp"
+                android:layout_marginTop="32dp"
                 android:text="12.00€"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.725"
+                app:layout_constraintStart_toEndOf="@+id/PizzaName"
                 app:layout_constraintTop_toBottomOf="@+id/Pizza" />
 
             <TextView
@@ -163,10 +160,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="Freddo Espresso"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.176"
+                app:layout_constraintHorizontal_bias="0.102"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Coffee" />
         </androidx.constraintlayout.widget.ConstraintLayout>

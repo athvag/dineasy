@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import static com.example.dineasy.user.email;
 import static com.example.dineasy.user.password;
 import static com.example.dineasy.user.phone_num;
@@ -15,6 +17,9 @@ import static com.example.dineasy.user.phone_num;
 public class MapPopup extends Map {
     private TextView BusName;
     private EditText date, time, num;
+    private TextView coffee,salads,pizza,bev;
+    com.example.dineasy.Menu m = new com.example.dineasy.Menu(3,"1234","as",1234,123,"12","12",12,"12","12",12,"12",12,12,2,"12","1", 1);
+    ArrayList<String> me = m.getList();
     int n = 0;
     Business B = new Business(1,"2","3",4,5,"6","7",8,"Los Amigos","1",5,"1",1,38.392069,23.881827);
 
@@ -36,6 +41,14 @@ public class MapPopup extends Map {
     public void showMenu(View view){
         n=2;
         setContentView(R.layout.menu);
+        coffee = findViewById(R.id.Freddo);
+        salads = findViewById(R.id.Ceasars);
+        pizza = findViewById(R.id.PizzaName);
+        bev = findViewById(R.id.bevName);
+        coffee.setText(me.get(0));
+        salads.setText(me.get(1));
+        pizza.setText(me.get(2));
+        bev.setText(me.get(3));
     }
 
     public void onBackPressed() {

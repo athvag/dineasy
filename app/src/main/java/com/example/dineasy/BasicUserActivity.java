@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 public class BasicUserActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private TextView currentuser,phoneNum;
+    private TextView coffee,salads,pizza,bev;
     com.example.dineasy.Menu m = new com.example.dineasy.Menu(3,"1234","as",1234,123,"12","12",12,"12","12",12,"12",12,12,2,"12","1", 1);
     ArrayList<String> me = m.getList();
     int n=1;
@@ -120,6 +121,18 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
         popup.inflate(R.menu.example_menu);
         popup.show();
     }
+    public void showMenu(View view){
+        n=3;
+        setContentView(R.layout.menu);
+        coffee = findViewById(R.id.Freddo);
+        salads = findViewById(R.id.Ceasars);
+        pizza = findViewById(R.id.PizzaName);
+        bev = findViewById(R.id.bevName);
+        coffee.setText(me.get(0));
+        salads.setText(me.get(1));
+        pizza.setText(me.get(2));
+        bev.setText(me.get(3));
+    }
 
     @Override
     public boolean onMenuItemClick(final MenuItem item) {
@@ -127,9 +140,11 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
             case R.id.item1:
                 SessionManagement sessionManagement = new SessionManagement(BasicUserActivity.this);
                 sessionManagement.removeSession();
+                n=2;
                 moveToMainScreen();
                 return false;
             case R.id.item3:
+                n=2;
                 setContentView(R.layout.profile);
                 currentuser = findViewById(R.id.username2);
                 phoneNum = findViewById(R.id.phone);
@@ -221,4 +236,18 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
         i.putExtras(bundle);
         startActivity(i);
     }
+    public void startPayment(View view) {
+        if (Payment.payment_id != 0) {
+            Intent y = new Intent(BasicUserActivity.this, PaymentDetails.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("indPrice", indPrice);
+            bundle.putString("choices", choices);
+            bundle.putDouble("price", price);
+            y.putExtras(bundle);
+            startActivity(y);
+        } else {
+            Toast.makeText(BasicUserActivity.this, "Παρακαλώ επιλέξτε Παραγγελία", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
