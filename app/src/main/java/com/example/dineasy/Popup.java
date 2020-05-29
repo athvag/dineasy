@@ -57,6 +57,7 @@ public class Popup extends MapsActivity {
     {
         SessionManagement sessionManagement = new SessionManagement(Popup.this);
         int userID = sessionManagement.getSession();
+        String username = sessionManagement.getSESname();
         date = findViewById(R.id.editTextDate3);
         time = findViewById(R.id.editTextTime2);
         num = findViewById(R.id.editTextTextPersonName2);
@@ -65,6 +66,6 @@ public class Popup extends MapsActivity {
         Intent intent = new Intent(Popup.this, BasicUserActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-        Toast.makeText(Popup.this, "Κύριε " + user.username + "\nΗ κράτησή σας ήταν επιτυχής " + "\nΗμερομηνία: " +date.getText().toString() + "\nΏρα: " + time.getText().toString() + "\nΑριθμός Ατόμων: " + num.getText().toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(Popup.this, "Αγαπητέ " + username + "\nΗ κράτησή σας ήταν επιτυχής " + "\nΗμερομηνία: " +date.getText().toString() + "\nΏρα: " + time.getText().toString() + "\nΑριθμός Ατόμων: " + num.getText().toString(), Toast.LENGTH_SHORT).show();
     }
 }

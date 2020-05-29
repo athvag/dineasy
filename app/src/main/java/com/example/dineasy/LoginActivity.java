@@ -61,14 +61,14 @@ public class LoginActivity extends AppCompatActivity {
     }
    private void validate(String username, String password){
         if((username.equals ("admin")) && (password.equals  ("1234"))){
-            user user = new user(1,"temp");
+            user user = new user(1,"admin");
             SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
             sessionManagement.saveSession(user);
             //2
             moveToNextActivity();
       }
         else if((username.equals ("user")) && (password.equals  ("1234"))){
-            user user = new user(2,"temp");
+            user user = new user(2,"user");
             SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
             sessionManagement.saveSession(user);
 
