@@ -5,7 +5,7 @@ public class Booking extends Basic_User{
     String booking_name;
     String booking_date;
     String booking_time;
-    int booking_ppl;
+    String booking_ppl;
     int booking_phone_num;
     static int counter=0;
 
@@ -15,6 +15,28 @@ public class Booking extends Basic_User{
         this.booking_name=name;
         this.booking_phone_num=phone_num;
         counter++;
-        this.booking_id=counter;
+        setBKID(counter);
     }
+
+    public String getBKName()
+    {
+        return booking_name;
+    }
+
+    public void setBKID(int id)
+    {
+        this.booking_id=id;
+    }
+
+    public void setBKPpl(String a)
+    {
+        this.booking_ppl=a;
+    }
+
+    public void setBKPhone(int p)
+    {
+        this.booking_phone_num = p;
+    }
+
+
 }

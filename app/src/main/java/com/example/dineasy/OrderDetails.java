@@ -31,5 +31,7 @@ Double price_bd;
         listView.setText(list_choice);
         priceView.setText("Συνολική τιμή " + price_bd.toString() + "€");
 
+        Payment payment = new Payment(1, price_bd.toString(), false);
+
     }
 }

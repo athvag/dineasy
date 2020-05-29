@@ -50,7 +50,7 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
         n=2;
     }
     public void moveMap(View view) {
-        Intent intent = new Intent(BasicUserActivity.this, MapsActivity.class);
+        Intent intent = new Intent(BasicUserActivity.this, Map.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

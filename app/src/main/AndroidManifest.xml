@@ -35,10 +35,10 @@
             android:value="AIzaSyCXA6zCxUsWCgwgU_e9vlG9Fyig16i_XWg" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".Map"
             android:label="@string/title_activity_maps">
         </activity>
-        <activity android:name=".Popup"
+        <activity android:name=".MapPopup"
             android:theme="@style/AppTheme2"
             android:label="">
 
