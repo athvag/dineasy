@@ -6,8 +6,8 @@ public class user {
     static String username="User2";
     static int phone_num;
     static int password;
-    String Firstname;
-    String Lastname;
+    static String Firstname;
+    static String Lastname;
 
     public user(int id, String name) {
         this.id = id;
