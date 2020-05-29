@@ -3,6 +3,7 @@ package com.example.dineasy;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -23,5 +24,9 @@ public class Popup extends MapsActivity {
         int height = dm.heightPixels;
         getWindow().setLayout((int)(width*.9),(int)(height*.5));
 
+    }
+
+    public void showMenu(View view){
+        setContentView(R.layout.menu);
     }
 }
