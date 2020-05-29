@@ -49,6 +49,11 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
         setContentView(R.layout.basic_user_after_qr);
         n=2;
     }
+    public void moveMap(View view) {
+        Intent intent = new Intent(BasicUserActivity.this, MapsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

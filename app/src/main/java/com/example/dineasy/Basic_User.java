@@ -29,4 +29,5 @@ public class Basic_User extends user {
     public void getUserInfo(){}
 
     public void setPayment(){}
+
 }

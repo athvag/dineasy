@@ -11,6 +11,7 @@
         android:layout_width="244dp"
         android:layout_height="76dp"
         android:background="@drawable/rounded_button"
+        android:onClick="moveMap"
         android:padding="15dp"
         android:stateListAnimator="@null"
         android:text="Αναζήτηση Καταστήματος/Κράτηση"
