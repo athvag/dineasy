@@ -20,6 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
     private GoogleMap mMap;
+    Business B = new Business(1,"2","3",4,5,"6","7",8,"Los Amigos","1",5,"1",1,38.392069,23.881827);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +46,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         mMap.setMinZoomPreference(10.0f);
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(38.392069, 23.881827);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Los Amigos"))
+        LatLng sydney = new LatLng(B.lat, B.lon);
+        mMap.addMarker(new MarkerOptions().position(sydney).title(B.bus_name))
         ;
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         mMap.setOnInfoWindowClickListener(this);

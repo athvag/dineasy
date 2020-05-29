@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class BasicUserActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private TextView currentuser,phoneNum;
-    com.example.dineasy.Menu m = new com.example.dineasy.Menu(3,"1234","as",1234,123,"12","12",12,"12","12",12,"12",12,"12","12",12);
+    com.example.dineasy.Menu m = new com.example.dineasy.Menu(3,"1234","as",1234,123,"12","12",12,"12","12",12,"12",12,12,2,"12","1", 1);
     ArrayList<String> me = m.getList();
     int n=1;
     Button coffeeButton,saladButton,pizzaButton,bevButton;

@@ -9,8 +9,9 @@ public class Business extends Business_Owner
     int bus_phone_num;
     String bus_email;
     double bus_rating;
+    double lat,lon;
 
-    public Business (int bid, String bemail, String busername, int bphone_num, int bpassword, String bFirstname, String bLastname,int id, String name, String address, int pnum, String email, double rat)
+    public Business (int bid, String bemail, String busername, int bphone_num, int bpassword, String bFirstname, String bLastname,int id, String name, String address, int pnum, String email, double rat,double lat,double lon)
     {
         super(bid,bemail,busername,bphone_num,bpassword,bFirstname,bLastname);
         this.bus_id = id;
@@ -19,6 +20,8 @@ public class Business extends Business_Owner
         this.bus_phone_num = pnum;
         this.bus_email = email;
         this.bus_rating = rat;
+        this.lat = lat;
+        this.lon = lon;
     }
 
     public void setBusName(String n)
@@ -48,7 +51,9 @@ public class Business extends Business_Owner
 
     //public void getBooking () {}
 
-    //public void getBusiness () {}
+    public String getBusiness () {
+        return bus_name;
+    }
 
     public void addTable() {}
     public void editTable() {}
