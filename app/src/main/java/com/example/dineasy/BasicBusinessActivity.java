@@ -91,7 +91,7 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
     }
 
     @Override
-    public boolean onMenuItemClick(MenuItem item) {
+    public boolean onMenuItemClick(final MenuItem item) {
         switch(item.getItemId()){
             case R.id.item1:
                 SessionManagement sessionManagement = new SessionManagement(BasicBusinessActivity.this);
@@ -136,6 +136,9 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
                         });
                     }
                 });
+                return false;
+                case R.id.item4:
+                Toast.makeText(BasicBusinessActivity.this,"Η εφαρμογή σας είναι ενημερωμένη", Toast.LENGTH_LONG).show();
                 return false;
             default:
                 return false;

@@ -181,6 +181,9 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
                         }
                 });
                 return false;
+            case R.id.item4:
+                Toast.makeText(BasicUserActivity.this,"Η εφαρμογή σας είναι ενημερωμένη", Toast.LENGTH_LONG).show();
+                return false;
             default:
                 return false;
         }
@@ -206,25 +209,25 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
             choices = choices +me.get(0)+"\n";
             indPrice = indPrice + "3.00 €" + "\n";
             price = price + 3;
-
+            Toast.makeText(BasicUserActivity.this,"Προστέθηκε στη παραγγελία: "+ me.get(0), Toast.LENGTH_SHORT).show();
         }
         else if (view == findViewById(R.id.saladAdd)){
             choices = choices + me.get(1)+"\n";
             indPrice = indPrice + "6.00 €" + "\n";
             price = price + 6;
-
+            Toast.makeText(BasicUserActivity.this,"Προστέθηκε στη παραγγελία: "+ me.get(1), Toast.LENGTH_SHORT).show();
         }
         else if (view == findViewById(R.id.pizzaAdd)){
             choices = choices + me.get(2)+"\n";
             indPrice = indPrice + "12.00 €" + "\n";
             price = price + 12;
-
+            Toast.makeText(BasicUserActivity.this,"Προστέθηκε στη παραγγελία: "+ me.get(2), Toast.LENGTH_SHORT).show();
         }
         else if (view == findViewById(R.id.bevAdd)){
             choices = choices + me.get(3) +"\n";
             indPrice = indPrice + "1.50 €" + "\n";
             price = price + 1.5;
-
+            Toast.makeText(BasicUserActivity.this,"Προστέθηκε στη παραγγελία: "+ me.get(3), Toast.LENGTH_SHORT).show();
         }
     }
     public void placeOrder(View view){
