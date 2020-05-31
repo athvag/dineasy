@@ -143,60 +143,7 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
         bev.setText(me.get(3));
     }
 
-    @Override
-    public boolean onMenuItemClick(final MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.item1:
-                SessionManagement sessionManagement = new SessionManagement(BasicUserActivity.this);
-                sessionManagement.removeSession();
-                n=2;
-                moveToMainScreen();
-                return false;
-            case R.id.item3:
-                n=2;
-                setContentView(R.layout.profile);
-                currentuser = findViewById(R.id.username2);
-                phoneNum = findViewById(R.id.phone);
-                Bundle extras = getIntent().getExtras();
-                currentuser.setText(extras.getString("Username"));
-                phoneNum.setText(extras.getString("Phone"));
-                Button btn = (Button) findViewById(R.id.push_button8);
-                btn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            setContentView(R.layout.passwordcheck);
-                            Button btn2 = (Button) findViewById(R.id.push_button16);
-                            btn2.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    final EditText username,phone;
-                                    setContentView(R.layout.profile2);
-                                    username = (EditText) findViewById(R.id.username2);
-                                    phone = (EditText) findViewById(R.id.phone);
-                                    Button btn3 = (Button) findViewById(R.id.push_button8);
-                                    btn3.setOnClickListener(new View.OnClickListener(){
-                                        @Override
-                                        public void onClick(View v) {
-                                            finish();
-                                            Intent intent = new Intent(BasicUserActivity.this, BasicUserActivity.class);
-                                            setName(username.getText().toString());
-                                            intent.putExtra("Username",username.getText().toString());
-                                            intent.putExtra("Phone",phone.getText().toString());
-                                            startActivity(intent);
-                                        }
-                                    });
-                                }
-                            });
-                        }
-                });
-                return false;
-            case R.id.item4:
-                Toast.makeText(BasicUserActivity.this,"Η εφαρμογή σας είναι ενημερωμένη", Toast.LENGTH_LONG).show();
-                return false;
-            default:
-                return false;
-        }
-    }
+
 
     public void setName(String name){
         SessionManagement sessionManagement = new SessionManagement(BasicUserActivity.this);
@@ -261,6 +208,61 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
             Toast.makeText(BasicUserActivity.this, "Παρακαλώ επιλέξτε Παραγγελία", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    @Override
+    public boolean onMenuItemClick(final MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.item1:
+                SessionManagement sessionManagement = new SessionManagement(BasicUserActivity.this);
+                sessionManagement.removeSession();
+                n=2;
+                moveToMainScreen();
+                return false;
+            case R.id.item4:
+                Toast.makeText(BasicUserActivity.this,"Η εφαρμογή σας είναι ενημερωμένη", Toast.LENGTH_LONG).show();
+                return false;
+            case R.id.item3:
+                n=2;
+                setContentView(R.layout.profile);
+                currentuser = findViewById(R.id.username2);
+                phoneNum = findViewById(R.id.phone);
+                Bundle extras = getIntent().getExtras();
+                currentuser.setText(extras.getString("Username"));
+                phoneNum.setText(extras.getString("Phone"));
+                Button btn = (Button) findViewById(R.id.push_button8);
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        setContentView(R.layout.passwordcheck);
+                        Button btn2 = (Button) findViewById(R.id.push_button16);
+                        btn2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                final EditText username,phone;
+                                setContentView(R.layout.profile2);
+                                username = (EditText) findViewById(R.id.username2);
+                                phone = (EditText) findViewById(R.id.phone);
+                                Button btn3 = (Button) findViewById(R.id.push_button8);
+                                btn3.setOnClickListener(new View.OnClickListener(){
+                                    @Override
+                                    public void onClick(View v) {
+                                        finish();
+                                        Intent intent = new Intent(BasicUserActivity.this, BasicUserActivity.class);
+                                        setName(username.getText().toString());
+                                        intent.putExtra("Username",username.getText().toString());
+                                        intent.putExtra("Phone",phone.getText().toString());
+                                        startActivity(intent);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+                return false;
+            default:
+                return false;
+        }
     }
 
 }

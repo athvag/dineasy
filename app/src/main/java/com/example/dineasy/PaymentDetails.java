@@ -36,9 +36,12 @@ public class PaymentDetails extends AppCompatActivity {
 
     }
     public void completePayment(View view){
+        SessionManagement sessionManagement = new SessionManagement(PaymentDetails.this);
+        String username= sessionManagement.getSESname();
         Payment.payment_status = true;
         Intent intent = new Intent(PaymentDetails.this, BasicUserActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("Username",username);
         startActivity(intent);
         Toast.makeText(PaymentDetails.this, "Η πληρωμή σας με ID: " + Payment.payment_id + " ήταν επιτυχής " , Toast.LENGTH_SHORT).show();
 
