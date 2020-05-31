@@ -1,6 +1,6 @@
 package com.example.dineasy;
 
-public class Order extends  Tables {
+public class Order extends Tables {
     private int order_id;
     private String order_username,order_time;
     private boolean order_status;

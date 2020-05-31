@@ -20,13 +20,12 @@
                 android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="364dp"
-                android:layout_marginEnd="128dp"
-                android:layout_marginRight="128dp"
                 android:text="Τηλέφωνο"
                 android:textColor="#000000"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
@@ -34,11 +33,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="528dp"
-                android:layout_marginEnd="100dp"
-                android:layout_marginRight="100dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
@@ -46,11 +44,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="416dp"
-                android:layout_marginEnd="100dp"
-                android:layout_marginRight="100dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -58,13 +55,12 @@
                 android:layout_width="76dp"
                 android:layout_height="37dp"
                 android:layout_marginTop="476dp"
-                android:layout_marginEnd="168dp"
-                android:layout_marginRight="168dp"
                 android:text="Email"
                 android:textColor="#000000"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -72,13 +68,12 @@
                 android:layout_width="214dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="56dp"
-                android:layout_marginEnd="96dp"
-                android:layout_marginRight="96dp"
                 android:text="Όνομα Χρήστη"
                 android:textColor="#000000"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -86,13 +81,12 @@
                 android:layout_width="97dp"
                 android:layout_height="39dp"
                 android:layout_marginTop="156dp"
-                android:layout_marginEnd="156dp"
-                android:layout_marginRight="156dp"
                 android:text="Όνομα"
                 android:textColor="#000000"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -100,13 +94,12 @@
                 android:layout_width="129dp"
                 android:layout_height="36dp"
                 android:layout_marginTop="248dp"
-                android:layout_marginEnd="140dp"
-                android:layout_marginRight="140dp"
                 android:text="Επώνυμο"
                 android:textColor="#000000"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
@@ -129,11 +122,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="108dp"
-                android:layout_marginEnd="100dp"
-                android:layout_marginRight="100dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
@@ -141,11 +133,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="204dp"
-                android:layout_marginEnd="100dp"
-                android:layout_marginRight="100dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
@@ -153,11 +144,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="292dp"
-                android:layout_marginEnd="100dp"
-                android:layout_marginRight="100dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
@@ -165,8 +155,6 @@
                 android:layout_width="172dp"
                 android:layout_height="73dp"
                 android:layout_marginTop="600dp"
-                android:layout_marginEnd="120dp"
-                android:layout_marginRight="120dp"
                 android:background="@drawable/rounded_button"
                 android:padding="15dp"
                 android:stateListAnimator="@null"
@@ -176,6 +164,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

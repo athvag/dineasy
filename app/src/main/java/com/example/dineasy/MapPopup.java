@@ -75,6 +75,7 @@ public class MapPopup extends Map {
         this.finish();
         Intent intent = new Intent(MapPopup.this, BasicUserActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("Username",username);
         startActivity(intent);
         Toast.makeText(MapPopup.this, "Αγαπητέ " + username + "\nΗ κράτησή σας ήταν επιτυχής " + "\nΗμερομηνία: " +date.getText().toString() + "\nΏρα: " + time.getText().toString() + "\nΑριθμός Ατόμων: " + num.getText().toString(), Toast.LENGTH_SHORT).show();
     }

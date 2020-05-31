@@ -31,6 +31,7 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
     com.example.dineasy.Menu m = new com.example.dineasy.Menu(3,"1234","as",1234,123,"12","12",12,"12","12",12,"12",12,12,2,"12","1", 1);
     ArrayList<String> me = m.getList();
     int n=1;
+    int flag=0;
     Button coffeeButton,saladButton,pizzaButton,bevButton;
     String choices = "";
     String indPrice = "";
@@ -44,13 +45,16 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);
     }
     public void scanButton(View view){
-        /*IntentIntegrator intentIntegrator = new IntentIntegrator(this);
+      /* IntentIntegrator intentIntegrator = new IntentIntegrator(this);
         intentIntegrator.setPrompt("Scan the table's barcode");
         intentIntegrator.setOrientationLocked(false);
         intentIntegrator.setBeepEnabled(false);
         intentIntegrator.initiateScan();*/
         setContentView(R.layout.basic_user_after_qr);
+        flag=1;
         n=2;
+
+
     }
     public void moveMap(View view) {
         Intent intent = new Intent(BasicUserActivity.this, Map.class);
@@ -73,24 +77,25 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
         if(scanContent == null){
         //if(scanContent.equals (Tables.code)){
 
-              // Intent intent = new Intent(basic_user.this, basic_user_after_qr.class);
+              //Intent intent = new Intent(BasicUserActivity.this, basic_user_after_qr.class);
                //startActivity(intent);
 
             setContentView(R.layout.basic_user_after_qr);
-
+            flag=1;
+            n=2;
 
            }
         else{
             n=1;
             setContentView(R.layout.basic_user);
-
+            flag=0;
             //Intent intent = new Intent(basic_user.this, basic_user.class);
             //startActivity(intent);
         }
 
 
         super.onActivityResult(requestCode, resultCode, data);
-    }//}
+    }
     @Override
     public void onBackPressed() {
         if (n == 1) {
@@ -98,10 +103,12 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
             Toast.makeText(BasicUserActivity.this, "Επιλέξτε Αποσύνδεση για να επιστρεψετε στην αρχική οθόνη", Toast.LENGTH_LONG).show();
 
         } else if (n == 2) {
+            flag = 0;
             n = 1;
             setContentView(R.layout.basic_user);
 
         } else if (n == 3) {
+            flag = 1;
             n = 2;
             setContentView(R.layout.basic_user_after_qr);
 
@@ -216,14 +223,16 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
             case R.id.item1:
                 SessionManagement sessionManagement = new SessionManagement(BasicUserActivity.this);
                 sessionManagement.removeSession();
-                n=2;
+                n=0;
                 moveToMainScreen();
                 return false;
             case R.id.item4:
                 Toast.makeText(BasicUserActivity.this,"Η εφαρμογή σας είναι ενημερωμένη", Toast.LENGTH_LONG).show();
                 return false;
             case R.id.item3:
-                n=2;
+                if (flag == 0){
+                n=2;}
+                else {n = 3;}
                 setContentView(R.layout.profile);
                 currentuser = findViewById(R.id.username2);
                 phoneNum = findViewById(R.id.phone);
