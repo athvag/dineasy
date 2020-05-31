@@ -1,6 +1,6 @@
 package com.example.dineasy;
 
-public class Booking extends Basic_User{
+public class Booking extends BasicUser {
     static int booking_id;
     String booking_name;
     String booking_date;

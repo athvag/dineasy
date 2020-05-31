@@ -1,6 +1,6 @@
 package com.example.dineasy;
 
-public class Business extends Business_Owner
+public class Business extends BusinessOwner
 {
 
     int bus_id;
@@ -49,7 +49,7 @@ public class Business extends Business_Owner
         return bus_rating;
     }
 
-    //public void getBooking () {}
+
 
     public String getBusiness () {
         return bus_name;

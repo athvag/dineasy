@@ -52,6 +52,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="424dp"
                 android:background="@drawable/rounded_button"
+                android:onClick="garson"
                 android:padding="15dp"
                 android:stateListAnimator="@null"
                 android:text="Φωνάξτε Σερβιτόρο"

@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 public class BasicUserActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private TextView currentuser,phoneNum;
     private TextView coffee,salads,pizza,bev;
+    Button bt;
     com.example.dineasy.Menu m = new com.example.dineasy.Menu(3,"1234","as",1234,123,"12","12",12,"12","12",12,"12",12,12,2,"12","1", 1);
     ArrayList<String> me = m.getList();
     int n=1;
@@ -42,11 +44,11 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);
     }
     public void scanButton(View view){
-       /* IntentIntegrator intentIntegrator = new IntentIntegrator(this);
+        /*IntentIntegrator intentIntegrator = new IntentIntegrator(this);
         intentIntegrator.setPrompt("Scan the table's barcode");
         intentIntegrator.setOrientationLocked(false);
         intentIntegrator.setBeepEnabled(false);
-        intentIntegrator.initiateScan(); */
+        intentIntegrator.initiateScan();*/
         setContentView(R.layout.basic_user_after_qr);
         n=2;
     }
@@ -69,7 +71,7 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         String scanContent = scanningResult.getContents();
         if(scanContent == null){
-        //if(scanContent.equals ("1234")){
+        //if(scanContent.equals (Tables.code)){
 
               // Intent intent = new Intent(basic_user.this, basic_user_after_qr.class);
                //startActivity(intent);
@@ -88,25 +90,32 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
 
 
         super.onActivityResult(requestCode, resultCode, data);
-    }
+    }//}
     @Override
     public void onBackPressed() {
         if (n == 1) {
 
-            Toast.makeText(BasicUserActivity.this,"Επιλέξτε Αποσύνδεση για να επιστρεψετε στην αρχική οθόνη", Toast.LENGTH_LONG).show();
+            Toast.makeText(BasicUserActivity.this, "Επιλέξτε Αποσύνδεση για να επιστρεψετε στην αρχική οθόνη", Toast.LENGTH_LONG).show();
 
-        }else if(n == 2){
+        } else if (n == 2) {
             n = 1;
             setContentView(R.layout.basic_user);
 
-        }
-        else if(n == 3){
+        } else if (n == 3) {
             n = 2;
             setContentView(R.layout.basic_user_after_qr);
 
         }
-
     }
+
+
+        public void garson(View view) {
+            final MediaPlayer mp = MediaPlayer.create(this,R.raw.garson);
+            mp.start();
+        }
+
+
+
     private void moveToMainScreen() {
         Intent intent = new Intent(BasicUserActivity.this,MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -251,6 +260,7 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
         } else {
             Toast.makeText(BasicUserActivity.this, "Παρακαλώ επιλέξτε Παραγγελία", Toast.LENGTH_SHORT).show();
         }
+
     }
 
 }

@@ -10,14 +10,14 @@ public class Login {
     }
 
     public String getUsername(){
-        return user.getUsername();
+        return User.getUsername();
     }
 
     public String getEmail(){
-        return user.email;
+        return User.email;
     }
 
     public int getPassword(){
-        return user.password;
+        return User.password;
     }
 }

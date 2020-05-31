@@ -9,10 +9,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class PaymentDetails extends AppCompatActivity {
-    TextView listView,priceView,indPriceView;
+    TextView listView,priceView,indPriceView,tableID;
     String list_choice;
     String price_choice;
     Double price_bd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +26,8 @@ public class PaymentDetails extends AppCompatActivity {
         list_choice = bundle.getString("choices");
         price_bd = bundle.getDouble("price");
         price_choice = bundle.getString("indPrice");
-
+        tableID = findViewById(R.id.textView24);
+        tableID.setText(Tables.code);
         indPriceView.setText(price_choice);
         listView.setText(list_choice);
         priceView.setText("Συνολική τιμή " + price_bd.toString() + "€");
@@ -39,5 +41,6 @@ public class PaymentDetails extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         Toast.makeText(PaymentDetails.this, "Η πληρωμή σας με ID: " + Payment.payment_id + " ήταν επιτυχής " , Toast.LENGTH_SHORT).show();
+
     }
     }

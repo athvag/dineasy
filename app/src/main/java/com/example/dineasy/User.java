@@ -1,6 +1,6 @@
 package com.example.dineasy;
 
-public class user {
+public class User {
     int id;
     static String email;
     static String username="User2";
@@ -9,11 +9,11 @@ public class user {
     static String Firstname;
     static String Lastname;
 
-    public user(int id, String name) {
+    public User(int id, String name) {
         this.id = id;
         this.username = name;
     }
-    public user(int id, String email, String name, int pnum, int pwd, String First, String Last) {
+    public User(int id, String email, String name, int pnum, int pwd, String First, String Last) {
         this.id = id;
         this.email= email;
         this.username = name;
@@ -52,14 +52,14 @@ public class user {
     }
 
     public void setEmail(String email){
-        user.email = email;
+        User.email = email;
     }
 
     public void setPhone(int PhNum){
         this.phone_num = PhNum;
     }
 
-    public void checkPassword(){}
+
 
 
 }

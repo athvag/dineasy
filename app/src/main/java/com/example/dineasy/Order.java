@@ -17,10 +17,8 @@ public class Order extends  Tables {
     }
 
     public static String getUsername(){
-        return user.getUsername();
+        return User.getUsername();
     }
 
-    public void placeOrder(){}
 
-    public void getOrder(){}
 }

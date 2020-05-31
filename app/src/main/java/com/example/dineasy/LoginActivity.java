@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText username;
@@ -61,14 +60,14 @@ public class LoginActivity extends AppCompatActivity {
     }
    private void validate(String username, String password){
         if((username.equals ("admin")) && (password.equals  ("1234"))){
-            user user = new user(1,"admin");
+            User user = new User(1,"admin");
             SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
             sessionManagement.saveSession(user);
             //2
             moveToNextActivity();
       }
         else if((username.equals ("user")) && (password.equals  ("1234"))){
-            user user = new user(2,"user");
+            User user = new User(2,"user");
             SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
             sessionManagement.saveSession(user);
 
@@ -100,6 +99,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public String getName(){
-        return user.username;
+        return User.username;
     }
 }

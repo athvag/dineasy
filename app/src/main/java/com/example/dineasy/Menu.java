@@ -14,7 +14,7 @@ public class Menu extends Business{
         this.dish_category = kathgoria;
         this.price = timh;
         items.add("Freddo Espresso");
-        items.add("Ceaar's Salad");
+        items.add("Ceasar's Salad");
         items.add("Του μερακλή");
         items.add("Coca Cola");
     }

@@ -14,7 +14,7 @@ public class SessionManagement {
         sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }
-    public void saveSession(user user){
+    public void saveSession(User user){
         //save session of user whenever user is logged in
     int id = user.getId();
     String uname = user.getUsername();

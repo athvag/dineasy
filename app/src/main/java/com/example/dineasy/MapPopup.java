@@ -10,9 +10,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static com.example.dineasy.user.email;
-import static com.example.dineasy.user.password;
-import static com.example.dineasy.user.phone_num;
+import static com.example.dineasy.User.email;
+import static com.example.dineasy.User.password;
+import static com.example.dineasy.User.phone_num;
 
 public class MapPopup extends Map {
     private TextView BusName;
@@ -71,7 +71,7 @@ public class MapPopup extends Map {
         date = findViewById(R.id.editTextDate3);
         time = findViewById(R.id.editTextTime2);
         num = findViewById(R.id.editTextTextPersonName2);
-        Booking bk = new Booking(userID, user.username, email, password, phone_num, user.Firstname, user.Lastname, Booking.booking_id, user.username, date.getText().toString(), time.getText().toString(), num.getText().toString(), phone_num);
+        Booking bk = new Booking(userID, User.username, email, password, phone_num, User.Firstname, User.Lastname, Booking.booking_id, User.username, date.getText().toString(), time.getText().toString(), num.getText().toString(), phone_num);
         this.finish();
         Intent intent = new Intent(MapPopup.this, BasicUserActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);

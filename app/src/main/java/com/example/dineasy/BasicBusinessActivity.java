@@ -14,14 +14,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class BasicBusinessActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private TextView currentuser,phoneNum;
+
+
     int k = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.basic_business);
         openBBC();
+
     }
 
     public void openBBC(){
@@ -149,4 +154,5 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
         SessionManagement sessionManagement = new SessionManagement(BasicBusinessActivity.this);
         sessionManagement.setSESname(name);
     }
+ 
 }
