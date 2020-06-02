@@ -17,14 +17,19 @@
 
             <TextView
                 android:id="@+id/textView14"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_marginTop="364dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="352dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginRight="36dp"
                 android:text="Τηλέφωνο"
                 android:textColor="#000000"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,22 +57,31 @@
 
             <TextView
                 android:id="@+id/textView15"
-                android:layout_width="76dp"
+                android:layout_width="wrap_content"
                 android:layout_height="37dp"
-                android:layout_marginTop="476dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="480dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginRight="36dp"
                 android:text="Email"
                 android:textColor="#000000"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="214dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginLeft="36dp"
                 android:layout_marginTop="56dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginRight="36dp"
                 android:text="Όνομα Χρήστη"
                 android:textColor="#000000"
                 android:textSize="30sp"
@@ -78,9 +92,13 @@
 
             <TextView
                 android:id="@+id/textView16"
-                android:layout_width="97dp"
+                android:layout_width="wrap_content"
                 android:layout_height="39dp"
-                android:layout_marginTop="156dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="152dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginRight="36dp"
                 android:text="Όνομα"
                 android:textColor="#000000"
                 android:textSize="30sp"
@@ -91,9 +109,13 @@
 
             <TextView
                 android:id="@+id/textView17"
-                android:layout_width="129dp"
+                android:layout_width="wrap_content"
                 android:layout_height="36dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginLeft="36dp"
                 android:layout_marginTop="248dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginRight="36dp"
                 android:text="Επώνυμο"
                 android:textColor="#000000"
                 android:textSize="30sp"

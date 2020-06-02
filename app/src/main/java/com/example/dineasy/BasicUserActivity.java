@@ -45,7 +45,7 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);
     }
     public void scanButton(View view){
-      /* IntentIntegrator intentIntegrator = new IntentIntegrator(this);
+       /*IntentIntegrator intentIntegrator = new IntentIntegrator(this);
         intentIntegrator.setPrompt("Scan the table's barcode");
         intentIntegrator.setOrientationLocked(false);
         intentIntegrator.setBeepEnabled(false);
@@ -75,7 +75,7 @@ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.On
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         String scanContent = scanningResult.getContents();
         if(scanContent == null){
-        //if(scanContent.equals (Tables.code)){
+       // if(scanContent.equals (Tables.code)){
 
               //Intent intent = new Intent(BasicUserActivity.this, basic_user_after_qr.class);
                //startActivity(intent);
