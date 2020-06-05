@@ -9,6 +9,7 @@
   <b>Αρχικά για να δείτε στην πράξη αυτά που υλοποιήσαμε σας προτείνουμε να κατεβάσετε απο κινητό το dineasy.apk που βρίσκεται στην καρτέλα release<br /></b>
   <img src="releases.png">
   <img src="releases2.png">
+
   Στο release έχουμε υλοποιήσει QR Scanner για το οποίο θα χρειαστεί να σκανάρετε το παρακάτω QR:<br />
 
   <img width="200" height="200" src="qr code.png"><br />
