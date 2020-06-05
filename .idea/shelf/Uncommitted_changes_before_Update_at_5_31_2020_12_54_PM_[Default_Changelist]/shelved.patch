@@ -1,0 +1,439 @@
+Index: app/src/main/java/com/example/dineasy/BasicUserActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.dineasy;\r\n\r\nimport androidx.annotation.Nullable;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.core.app.ActivityCompat;\r\n\r\nimport android.Manifest;\r\nimport android.content.Intent;\r\nimport android.content.pm.PackageManager;\r\nimport android.os.Bundle;\r\nimport android.view.Menu;\r\nimport android.view.MenuInflater;\r\nimport android.view.MenuItem;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.PopupMenu;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport com.google.zxing.integration.android.IntentIntegrator;\r\nimport com.google.zxing.integration.android.IntentResult;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class BasicUserActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {\r\n    private TextView currentuser,phoneNum;\r\n    private TextView coffee,salads,pizza,bev;\r\n    com.example.dineasy.Menu m = new com.example.dineasy.Menu(3,\"1234\",\"as\",1234,123,\"12\",\"12\",12,\"12\",\"12\",12,\"12\",12,12,2,\"12\",\"1\", 1);\r\n    ArrayList<String> me = m.getList();\r\n    int n=1;\r\n    Button coffeeButton,saladButton,pizzaButton,bevButton;\r\n    String choices = \"\";\r\n    String indPrice = \"\";\r\n    double price = 0.00;\r\n    private Bundle savedInstanceState1;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.basic_user);\r\n        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);\r\n    }\r\n    public void scanButton(View view){\r\n       /* IntentIntegrator intentIntegrator = new IntentIntegrator(this);\r\n        intentIntegrator.setPrompt(\"Scan the table's barcode\");\r\n        intentIntegrator.setOrientationLocked(false);\r\n        intentIntegrator.setBeepEnabled(false);\r\n        intentIntegrator.initiateScan(); */\r\n        setContentView(R.layout.basic_user_after_qr);\r\n        n=2;\r\n    }\r\n    public void moveMap(View view) {\r\n        Intent intent = new Intent(BasicUserActivity.this, Map.class);\r\n        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);\r\n        startActivity(intent);\r\n    }\r\n\r\n    @Override\r\n    public boolean onCreateOptionsMenu(Menu menu) {\r\n        MenuInflater inflater = getMenuInflater();\r\n        inflater.inflate(R.menu.example_menu,menu);\r\n        return true;\r\n    }\r\n\r\n    @Override\r\n    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {\r\n\r\n        IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);\r\n        String scanContent = scanningResult.getContents();\r\n        if(scanContent == null){\r\n        //if(scanContent.equals (\"1234\")){\r\n\r\n              // Intent intent = new Intent(basic_user.this, basic_user_after_qr.class);\r\n               //startActivity(intent);\r\n\r\n            setContentView(R.layout.basic_user_after_qr);\r\n\r\n\r\n           }\r\n        else{\r\n            n=1;\r\n            setContentView(R.layout.basic_user);\r\n\r\n            //Intent intent = new Intent(basic_user.this, basic_user.class);\r\n            //startActivity(intent);\r\n        }\r\n\r\n\r\n        super.onActivityResult(requestCode, resultCode, data);\r\n    }\r\n    @Override\r\n    public void onBackPressed() {\r\n        if (n == 1) {\r\n\r\n            Toast.makeText(BasicUserActivity.this,\"Επιλέξτε Αποσύνδεση για να επιστρεψετε στην αρχική οθόνη\", Toast.LENGTH_LONG).show();\r\n\r\n        }else if(n == 2){\r\n            n = 1;\r\n            setContentView(R.layout.basic_user);\r\n\r\n        }\r\n        else if(n == 3){\r\n            n = 2;\r\n            setContentView(R.layout.basic_user_after_qr);\r\n\r\n        }\r\n\r\n    }\r\n    private void moveToMainScreen() {\r\n        Intent intent = new Intent(BasicUserActivity.this,MainActivity.class);\r\n        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);\r\n        startActivity(intent);\r\n    }\r\n\r\n\r\n\r\n    public void showPopup(View view) {\r\n        PopupMenu popup = new PopupMenu(this, view);\r\n        popup.setOnMenuItemClickListener(this);\r\n        popup.inflate(R.menu.example_menu);\r\n        popup.show();\r\n    }\r\n    public void showMenu(View view){\r\n        n=3;\r\n        setContentView(R.layout.menu);\r\n        coffee = findViewById(R.id.Freddo);\r\n        salads = findViewById(R.id.Ceasars);\r\n        pizza = findViewById(R.id.PizzaName);\r\n        bev = findViewById(R.id.bevName);\r\n        coffee.setText(me.get(0));\r\n        salads.setText(me.get(1));\r\n        pizza.setText(me.get(2));\r\n        bev.setText(me.get(3));\r\n    }\r\n\r\n    @Override\r\n    public boolean onMenuItemClick(final MenuItem item) {\r\n        switch(item.getItemId()){\r\n            case R.id.item1:\r\n                SessionManagement sessionManagement = new SessionManagement(BasicUserActivity.this);\r\n                sessionManagement.removeSession();\r\n                n=2;\r\n                moveToMainScreen();\r\n                return false;\r\n            case R.id.item3:\r\n                n=2;\r\n                setContentView(R.layout.profile);\r\n                currentuser = findViewById(R.id.username2);\r\n                phoneNum = findViewById(R.id.phone);\r\n                Bundle extras = getIntent().getExtras();\r\n                currentuser.setText(extras.getString(\"Username\"));\r\n                phoneNum.setText(extras.getString(\"Phone\"));\r\n                Button btn = (Button) findViewById(R.id.push_button8);\r\n                btn.setOnClickListener(new View.OnClickListener() {\r\n                        @Override\r\n                        public void onClick(View v) {\r\n                            setContentView(R.layout.passwordcheck);\r\n                            Button btn2 = (Button) findViewById(R.id.push_button16);\r\n                            btn2.setOnClickListener(new View.OnClickListener() {\r\n                                @Override\r\n                                public void onClick(View v) {\r\n                                    final EditText username,phone;\r\n                                    setContentView(R.layout.profile2);\r\n                                    username = (EditText) findViewById(R.id.username2);\r\n                                    phone = (EditText) findViewById(R.id.phone);\r\n                                    Button btn3 = (Button) findViewById(R.id.push_button8);\r\n                                    btn3.setOnClickListener(new View.OnClickListener(){\r\n                                        @Override\r\n                                        public void onClick(View v) {\r\n                                            finish();\r\n                                            Intent intent = new Intent(BasicUserActivity.this, BasicUserActivity.class);\r\n                                            setName(username.getText().toString());\r\n                                            intent.putExtra(\"Username\",username.getText().toString());\r\n                                            intent.putExtra(\"Phone\",phone.getText().toString());\r\n                                            startActivity(intent);\r\n                                        }\r\n                                    });\r\n                                }\r\n                            });\r\n                        }\r\n                });\r\n                return false;\r\n            default:\r\n                return false;\r\n        }\r\n    }\r\n\r\n    public void setName(String name){\r\n        SessionManagement sessionManagement = new SessionManagement(BasicUserActivity.this);\r\n        sessionManagement.setSESname(name);\r\n    }\r\n    //PARAGGELIA//\r\n\r\n    public void moveToOrder(View view) {\r\n        n=3;\r\n        setContentView(R.layout.order);\r\n        coffeeButton = (Button) findViewById(R.id.coffeeAdd);\r\n        saladButton = (Button) findViewById(R.id.saladAdd);\r\n        pizzaButton = (Button) findViewById(R.id.pizzaAdd);\r\n        bevButton = (Button) findViewById(R.id.bevAdd);\r\n    }\r\n\r\n    public void add_to_list(View view){\r\n        if (view == findViewById(R.id.coffeeAdd)){\r\n            choices = choices +me.get(0)+\"\\n\";\r\n            indPrice = indPrice + \"3.00 €\" + \"\\n\";\r\n            price = price + 3;\r\n\r\n        }\r\n        else if (view == findViewById(R.id.saladAdd)){\r\n            choices = choices + me.get(1)+\"\\n\";\r\n            indPrice = indPrice + \"6.00 €\" + \"\\n\";\r\n            price = price + 6;\r\n\r\n        }\r\n        else if (view == findViewById(R.id.pizzaAdd)){\r\n            choices = choices + me.get(2)+\"\\n\";\r\n            indPrice = indPrice + \"12.00 €\" + \"\\n\";\r\n            price = price + 12;\r\n\r\n        }\r\n        else if (view == findViewById(R.id.bevAdd)){\r\n            choices = choices + me.get(3) +\"\\n\";\r\n            indPrice = indPrice + \"1.50 €\" + \"\\n\";\r\n            price = price + 1.5;\r\n\r\n        }\r\n    }\r\n    public void placeOrder(View view){\r\n        Intent i = new Intent(BasicUserActivity.this,OrderDetails.class);\r\n        Bundle bundle = new Bundle ();\r\n        bundle.putString(\"indPrice\",indPrice);\r\n        bundle.putString(\"choices\",choices);\r\n        bundle.putDouble(\"price\",price);\r\n        i.putExtras(bundle);\r\n        startActivity(i);\r\n    }\r\n    public void startPayment(View view) {\r\n        if (Payment.payment_id != 0) {\r\n            Intent y = new Intent(BasicUserActivity.this, PaymentDetails.class);\r\n            Bundle bundle = new Bundle();\r\n            bundle.putString(\"indPrice\", indPrice);\r\n            bundle.putString(\"choices\", choices);\r\n            bundle.putDouble(\"price\", price);\r\n            y.putExtras(bundle);\r\n            startActivity(y);\r\n        } else {\r\n            Toast.makeText(BasicUserActivity.this, \"Παρακαλώ επιλέξτε Παραγγελία\", Toast.LENGTH_SHORT).show();\r\n        }\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/dineasy/BasicUserActivity.java	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ app/src/main/java/com/example/dineasy/BasicUserActivity.java	(date 1590830197510)
+@@ -7,6 +7,7 @@
+ import android.Manifest;
+ import android.content.Intent;
+ import android.content.pm.PackageManager;
++import android.media.MediaPlayer;
+ import android.os.Bundle;
+ import android.view.Menu;
+ import android.view.MenuInflater;
+@@ -26,6 +27,7 @@
+ public class BasicUserActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+     private TextView currentuser,phoneNum;
+     private TextView coffee,salads,pizza,bev;
++    Button bt;
+     com.example.dineasy.Menu m = new com.example.dineasy.Menu(3,"1234","as",1234,123,"12","12",12,"12","12",12,"12",12,12,2,"12","1", 1);
+     ArrayList<String> me = m.getList();
+     int n=1;
+@@ -42,11 +44,11 @@
+         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);
+     }
+     public void scanButton(View view){
+-       /* IntentIntegrator intentIntegrator = new IntentIntegrator(this);
++        /*IntentIntegrator intentIntegrator = new IntentIntegrator(this);
+         intentIntegrator.setPrompt("Scan the table's barcode");
+         intentIntegrator.setOrientationLocked(false);
+         intentIntegrator.setBeepEnabled(false);
+-        intentIntegrator.initiateScan(); */
++        intentIntegrator.initiateScan();*/
+         setContentView(R.layout.basic_user_after_qr);
+         n=2;
+     }
+@@ -69,7 +71,7 @@
+         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+         String scanContent = scanningResult.getContents();
+         if(scanContent == null){
+-        //if(scanContent.equals ("1234")){
++        //if(scanContent.equals (Tables.code)){
+ 
+               // Intent intent = new Intent(basic_user.this, basic_user_after_qr.class);
+                //startActivity(intent);
+@@ -88,25 +90,32 @@
+ 
+ 
+         super.onActivityResult(requestCode, resultCode, data);
+-    }
++    }//}
+     @Override
+     public void onBackPressed() {
+         if (n == 1) {
+ 
+-            Toast.makeText(BasicUserActivity.this,"Επιλέξτε Αποσύνδεση για να επιστρεψετε στην αρχική οθόνη", Toast.LENGTH_LONG).show();
++            Toast.makeText(BasicUserActivity.this, "Επιλέξτε Αποσύνδεση για να επιστρεψετε στην αρχική οθόνη", Toast.LENGTH_LONG).show();
+ 
+-        }else if(n == 2){
++        } else if (n == 2) {
+             n = 1;
+             setContentView(R.layout.basic_user);
+ 
+-        }
+-        else if(n == 3){
++        } else if (n == 3) {
+             n = 2;
+             setContentView(R.layout.basic_user_after_qr);
+ 
+         }
++    }
+ 
+-    }
++
++        public void garson(View view) {
++            final MediaPlayer mp = MediaPlayer.create(this,R.raw.garson);
++            mp.start();
++        }
++
++
++
+     private void moveToMainScreen() {
+         Intent intent = new Intent(BasicUserActivity.this,MainActivity.class);
+         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+Index: app/src/main/res/layout/activity_order_details.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".OrderDetails\">\r\n\r\n    <TextView\r\n        android:id=\"@+id/priceView\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:hint=\"h timi\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.563\" />\r\n\r\n    <TextView\r\n\r\n        android:id=\"@+id/indpriceview\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:hint=\"Timi ksexwristwn\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"1.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.278\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView21\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Order ID: 0001\"\r\n        android:textStyle=\"italic\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.503\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.091\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView23\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Τιμή\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.788\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.185\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView22\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Προϊόντα\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.08\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.185\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/orderSuccess\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Η παραγγελία σας ήταν επιτυχής!\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.507\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.064\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/listView\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:hint=\"Ta proionta\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.082\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.279\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_order_details.xml	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ app/src/main/res/layout/activity_order_details.xml	(date 1590763432542)
+@@ -22,10 +22,9 @@
+         android:id="@+id/indpriceview"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:hint="Timi ksexwristwn"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="1.0"
++        app:layout_constraintHorizontal_bias="0.734"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintVertical_bias="0.278" />
+@@ -84,7 +83,6 @@
+         android:id="@+id/listView"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:hint="Ta proionta"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.082"
+Index: app/src/main/java/com/example/dineasy/Payment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.dineasy;\r\n\r\npublic class Payment extends OrderDetails{\r\n    static int payment_id;\r\n    String payment_price;\r\n    static boolean payment_status;\r\n\r\n    public Payment(int id, String price, boolean status)\r\n    {\r\n        this.payment_id =id;\r\n        this.payment_price = price;\r\n        this.payment_status = status;\r\n    }\r\n\r\n    /*public static void setPayment_status(boolean status)\r\n    {\r\n        this.payment_status = status;\r\n    }*/\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/dineasy/Payment.java	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ app/src/main/java/com/example/dineasy/Payment.java	(date 1590853340711)
+@@ -1,6 +1,6 @@
+ package com.example.dineasy;
+ 
+-public class Payment extends OrderDetails{
++public class Payment{
+     static int payment_id;
+     String payment_price;
+     static boolean payment_status;
+Index: app/src/main/java/com/example/dineasy/Tables.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.dineasy;\r\n\r\npublic class Tables extends Business{\r\n    private int table_id,table_qr,table_capacity;\r\n    private boolean table_status;\r\n\r\n    public Tables(int bid, String bemail, String busername, int bphone_num, int bpassword, String bFirstname, String bLastname,int id, String name, String address, int pnum, String email, double rat,double lat,double lon) {\r\n        super(bid,bemail,busername,bphone_num,bpassword,bFirstname,bLastname,id, name, address, pnum, email, rat,lat,lon);\r\n    }\r\n\r\n    public void setTableQR(int code){\r\n        this.table_qr = code;\r\n    }\r\n    public void setTableCap(int cap){\r\n        this.table_capacity = cap;\r\n    }\r\n    public void setTableStatus(boolean status){\r\n        this.table_status = status;\r\n    }\r\n    public void verifyQR(){\r\n\r\n    }\r\n    public void getTablesInfo(){}\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/dineasy/Tables.java	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ app/src/main/java/com/example/dineasy/Tables.java	(date 1590762630191)
+@@ -3,6 +3,7 @@
+ public class Tables extends Business{
+     private int table_id,table_qr,table_capacity;
+     private boolean table_status;
++    static String code = "1234";
+ 
+     public Tables(int bid, String bemail, String busername, int bphone_num, int bpassword, String bFirstname, String bLastname,int id, String name, String address, int pnum, String email, double rat,double lat,double lon) {
+         super(bid,bemail,busername,bphone_num,bpassword,bFirstname,bLastname,id, name, address, pnum, email, rat,lat,lon);
+Index: app/src/main/java/com/example/dineasy/PaymentDetails.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.dineasy;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\npublic class PaymentDetails extends AppCompatActivity {\r\n    TextView listView,priceView,indPriceView;\r\n    String list_choice;\r\n    String price_choice;\r\n    Double price_bd;\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.payment);\r\n        listView = (TextView) findViewById(R.id.listView3);\r\n        priceView = (TextView) findViewById(R.id.priceView2);\r\n        indPriceView = (TextView) findViewById(R.id.indpriceview2);\r\n\r\n        Bundle bundle = getIntent().getExtras();\r\n        list_choice = bundle.getString(\"choices\");\r\n        price_bd = bundle.getDouble(\"price\");\r\n        price_choice = bundle.getString(\"indPrice\");\r\n\r\n        indPriceView.setText(price_choice);\r\n        listView.setText(list_choice);\r\n        priceView.setText(\"Συνολική τιμή \" + price_bd.toString() + \"€\");\r\n\r\n\r\n\r\n    }\r\n    public void completePayment(View view){\r\n        Payment.payment_status = true;\r\n        Intent intent = new Intent(PaymentDetails.this, BasicUserActivity.class);\r\n        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);\r\n        startActivity(intent);\r\n        Toast.makeText(PaymentDetails.this, \"Η πληρωμή σας με ID: \" + Payment.payment_id + \" ήταν επιτυχής \" , Toast.LENGTH_SHORT).show();\r\n    }\r\n    }
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/dineasy/PaymentDetails.java	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ app/src/main/java/com/example/dineasy/PaymentDetails.java	(date 1590762930187)
+@@ -9,10 +9,11 @@
+ import android.widget.Toast;
+ 
+ public class PaymentDetails extends AppCompatActivity {
+-    TextView listView,priceView,indPriceView;
++    TextView listView,priceView,indPriceView,tableID;
+     String list_choice;
+     String price_choice;
+     Double price_bd;
++
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+@@ -25,7 +26,8 @@
+         list_choice = bundle.getString("choices");
+         price_bd = bundle.getDouble("price");
+         price_choice = bundle.getString("indPrice");
+-
++        tableID = findViewById(R.id.textView24);
++        tableID.setText(Tables.code);
+         indPriceView.setText(price_choice);
+         listView.setText(list_choice);
+         priceView.setText("Συνολική τιμή " + price_bd.toString() + "€");
+Index: app/src/main/java/com/example/dineasy/Basic_User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.dineasy;\r\n\r\nimport android.widget.Button;\r\n\r\npublic class Basic_User extends user {\r\n    String payment_method[];\r\n    Button Search;\r\n\r\n    public Basic_User(int id, String name,String email,int password,int phone_num, String Firstname, String Lastname) {\r\n        super(id, name,email, password,phone_num,Firstname,Lastname);\r\n    }\r\n\r\n    public String[] payment_method(){\r\n        return payment_method;\r\n    }\r\n\r\n    public void onClick(Button Search){}\r\n\r\n    public void scanQR(){}\r\n\r\n    public void getCard(){}\r\n\r\n    public void selectCard(){}\r\n\r\n    public void verifyCard(){}\r\n\r\n    public void callWaiter(){}\r\n\r\n    public void getUserInfo(){}\r\n\r\n    public void setPayment(){}\r\n\r\n}\r\n
+===================================================================
+--- app/src/main/java/com/example/dineasy/Basic_User.java	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ app/src/main/java/com/example/dineasy/BasicUser.java	(date 1590763659874)
+@@ -2,11 +2,11 @@
+ 
+ import android.widget.Button;
+ 
+-public class Basic_User extends user {
++public class BasicUser extends user {
+     String payment_method[];
+     Button Search;
+ 
+-    public Basic_User(int id, String name,String email,int password,int phone_num, String Firstname, String Lastname) {
++    public BasicUser(int id, String name, String email, int password, int phone_num, String Firstname, String Lastname) {
+         super(id, name,email, password,phone_num,Firstname,Lastname);
+     }
+ 
+Index: app/src/main/java/com/example/dineasy/BasicBusinessActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.dineasy;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.Menu;\r\nimport android.view.MenuInflater;\r\nimport android.view.MenuItem;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.PopupMenu;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\npublic class BasicBusinessActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {\r\n    private TextView currentuser,phoneNum;\r\n    int k = 0;\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.basic_business);\r\n        openBBC();\r\n    }\r\n\r\n    public void openBBC(){\r\n        Button btn = (Button) findViewById(R.id.push_button5);\r\n        Button btn2 = (Button) findViewById(R.id.push_button6);\r\n        btn.setOnClickListener(new View.OnClickListener(){\r\n            @Override\r\n            public void onClick(View v) {\r\n                k = 1;\r\n                setContentView(R.layout.basic_business_creation);\r\n                Button btn3 = (Button) findViewById(R.id.push_button9);\r\n                btn3.setOnClickListener(new View.OnClickListener(){\r\n                    @Override\r\n                    public void onClick(View v) {\r\n                        k = 3;\r\n                        setContentView(R.layout.basic_business_creation2);\r\n                    }\r\n                });\r\n            }\r\n        });\r\n        btn2.setOnClickListener(new View.OnClickListener(){\r\n            @Override\r\n            public void onClick(View v) {\r\n                k = 2;\r\n                setContentView(R.layout.manage_business);\r\n            }\r\n        });\r\n    }\r\n\r\n    @Override\r\n    public void onBackPressed() {\r\n        if (k == 1 || k == 2) {\r\n            k = 0;\r\n            setContentView(R.layout.basic_business);\r\n            openBBC();\r\n        }else if(k == 3){\r\n            k = 1;\r\n            setContentView(R.layout.basic_business_creation);\r\n        }\r\n        else {\r\n\r\n                Toast.makeText(BasicBusinessActivity.this,\"Επιλέξτε Αποσύνδεση για να επιστρεψετε στην αρχική οθόνη\", Toast.LENGTH_LONG).show();\r\n            }\r\n        }\r\n\r\n\r\n    @Override\r\n    public boolean onCreateOptionsMenu(Menu menu) {\r\n        MenuInflater inflater = getMenuInflater();\r\n        inflater.inflate(R.menu.example_menu,menu);\r\n        return true;\r\n    }\r\n\r\n\r\n\r\n    private void moveToMainScreen() {\r\n        Intent intent = new Intent(BasicBusinessActivity.this,MainActivity.class);\r\n        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);\r\n        startActivity(intent);\r\n    }\r\n\r\n    public void showPopup(View view) {\r\n        PopupMenu popup = new PopupMenu(this, view);\r\n        popup.setOnMenuItemClickListener((PopupMenu.OnMenuItemClickListener) this);\r\n        popup.inflate(R.menu.example_menu);\r\n        popup.show();\r\n    }\r\n\r\n    @Override\r\n    public boolean onMenuItemClick(MenuItem item) {\r\n        switch(item.getItemId()){\r\n            case R.id.item1:\r\n                SessionManagement sessionManagement = new SessionManagement(BasicBusinessActivity.this);\r\n                sessionManagement.removeSession();\r\n                k=1;\r\n                moveToMainScreen();\r\n                return false;\r\n            case R.id.item3:\r\n                k=1;\r\n                setContentView(R.layout.profile);\r\n                currentuser = findViewById(R.id.username2);\r\n                phoneNum = findViewById(R.id.phone);\r\n                Bundle extras = getIntent().getExtras();\r\n                currentuser.setText(extras.getString(\"Username\"));\r\n                phoneNum.setText(extras.getString(\"Phone\"));\r\n                Button btn = (Button) findViewById(R.id.push_button8);\r\n                btn.setOnClickListener(new View.OnClickListener() {\r\n                    @Override\r\n                    public void onClick(View v) {\r\n                        setContentView(R.layout.passwordcheck);\r\n                        Button btn2 = (Button) findViewById(R.id.push_button16);\r\n                        btn2.setOnClickListener(new View.OnClickListener() {\r\n                            @Override\r\n                            public void onClick(View v) {\r\n                                final EditText username,phone;\r\n                                setContentView(R.layout.profile2);\r\n                                username = (EditText) findViewById(R.id.username2);\r\n                                phone = (EditText) findViewById(R.id.phone);\r\n                                Button btn3 = (Button) findViewById(R.id.push_button8);\r\n                                btn3.setOnClickListener(new View.OnClickListener(){\r\n                                    @Override\r\n                                    public void onClick(View v) {\r\n                                        finish();\r\n                                        Intent intent = new Intent(BasicBusinessActivity.this, BasicBusinessActivity.class);\r\n                                        setName(username.getText().toString());\r\n                                        intent.putExtra(\"Username\",username.getText().toString());\r\n                                        intent.putExtra(\"Phone\",phone.getText().toString());\r\n                                        startActivity(intent);\r\n                                    }\r\n                                });\r\n                            }\r\n                        });\r\n                    }\r\n                });\r\n                return false;\r\n            default:\r\n                return false;\r\n        }\r\n    }\r\n\r\n    public void setName(String name){\r\n        SessionManagement sessionManagement = new SessionManagement(BasicBusinessActivity.this);\r\n        sessionManagement.setSESname(name);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/dineasy/BasicBusinessActivity.java	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ app/src/main/java/com/example/dineasy/BasicBusinessActivity.java	(date 1590835310892)
+@@ -14,14 +14,19 @@
+ 
+ import androidx.appcompat.app.AppCompatActivity;
+ 
++import java.util.ArrayList;
++
+ public class BasicBusinessActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+     private TextView currentuser,phoneNum;
++
++
+     int k = 0;
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.basic_business);
+         openBBC();
++
+     }
+ 
+     public void openBBC(){
+@@ -146,4 +151,5 @@
+         SessionManagement sessionManagement = new SessionManagement(BasicBusinessActivity.this);
+         sessionManagement.setSESname(name);
+     }
++ 
+ }
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05___Default_Changelist_.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05___Default_Changelist_.xml	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05___Default_Changelist_.xml	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_22_5_2020_3_05_μμ_[Default_Changelist]" date="1590149127966" recycled="false" toDelete="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05_μμ_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 22/5/2020 3:05 μμ [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05___Default_Changelist_1.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05___Default_Changelist_1.xml	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05___Default_Changelist_1.xml	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_22_5_2020_3_05_μμ_[Default_Changelist]1" date="1590149155441" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05_μμ_[Default_Changelist]1/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 22/5/2020 3:05 μμ [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: app/src/main/java/com/example/dineasy/Search.java
+===================================================================
+--- app/src/main/java/com/example/dineasy/Search.java	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ app/src/main/java/com/example/dineasy/Search.java	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
+@@ -1,41 +0,0 @@
+-package com.example.dineasy;
+-
+-public class Search
+-{
+-    String location;
+-    double range;
+-    double rating;
+-    String search_name;
+-
+-    public Search( String loc, double ran, double rat, String s_name)
+-    {
+-        this.location = loc;
+-        this.range = range;
+-        this.rating = rat;
+-        this.search_name = s_name;
+-    }
+-
+-    public String getSLocation()
+-    {
+-        return location;
+-    }
+-
+-    public double getSRange()
+-    {
+-        return range;
+-    }
+-
+-    public double getSRating()
+-    {
+-        return rating;
+-    }
+-
+-    public String getSName()
+-    {
+-        return search_name;
+-    }
+-
+-    public void setSName(String search_name) {
+-        this.search_name = search_name;
+-    }
+-}
+Index: app/src/main/java/com/example/dineasy/Business_Owner.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.dineasy;\r\n\r\npublic class Business_Owner extends user\r\n{\r\n    int business_owner_id;\r\n\r\n    public Business_Owner(int id, String email, String username, int phone_num, int password, String Firstname, String Lastname)\r\n    {\r\n        super(id, email, username, phone_num, password, Firstname, Lastname );\r\n        this.business_owner_id=id;\r\n    }\r\n}
+===================================================================
+--- app/src/main/java/com/example/dineasy/Business_Owner.java	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ app/src/main/java/com/example/dineasy/BusinessOwner.java	(date 1590763659885)
+@@ -1,10 +1,10 @@
+ package com.example.dineasy;
+ 
+-public class Business_Owner extends user
++public class BusinessOwner extends user
+ {
+     int business_owner_id;
+ 
+-    public Business_Owner(int id, String email, String username, int phone_num, int password, String Firstname, String Lastname)
++    public BusinessOwner(int id, String email, String username, int phone_num, int password, String Firstname, String Lastname)
+     {
+         super(id, email, username, phone_num, password, Firstname, Lastname );
+         this.business_owner_id=id;
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\r\n\r\nandroid {\r\n    compileSdkVersion 29\r\n    buildToolsVersion \"29.0.3\"\r\n\r\n    defaultConfig {\r\n        applicationId \"com.example.dineasy\"\r\n        minSdkVersion 16\r\n        targetSdkVersion 29\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n\r\n}\r\n\r\ndependencies {\r\n    implementation fileTree(dir: 'libs', include: ['*.jar'])\r\n\r\n    implementation 'androidx.appcompat:appcompat:1.1.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'\r\n    implementation 'androidx.legacy:legacy-support-v4:1.0.0'\r\n    implementation \"androidx.recyclerview:recyclerview:1.1.0\"\r\n    implementation \"androidx.cardview:cardview:1.0.0\"\r\n    implementation 'com.google.android.material:material:1.1.0'\r\n    implementation 'androidx.navigation:navigation-fragment:2.2.2'\r\n    implementation 'androidx.navigation:navigation-ui:2.2.2'\r\n    implementation 'com.google.android.gms:play-services-maps:17.0.0'\r\n    testImplementation 'junit:junit:4.13'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.1'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'\r\n    implementation 'androidx.legacy:legacy-support-v4:1.0.0'\r\n    implementation 'androidx.cardview:cardview:1.0.0'\r\n    implementation 'com.google.zxing:core:3.4.0'\r\n    implementation 'com.journeyapps:zxing-android-embedded:3.5.0'\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ app/build.gradle	(date 1590832359607)
+@@ -25,7 +25,6 @@
+ 
+ dependencies {
+     implementation fileTree(dir: 'libs', include: ['*.jar'])
+-
+     implementation 'androidx.appcompat:appcompat:1.1.0'
+     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+Index: app/src/main/res/layout/payment.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".PaymentDetails\">\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView24\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:textStyle=\"italic\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.68\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.091\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/push_button18\"\r\n        android:layout_width=\"136dp\"\r\n        android:layout_height=\"77dp\"\r\n        android:background=\"@drawable/rounded_button\"\r\n        android:padding=\"15dp\"\r\n        android:onClick=\"completePayment\"\r\n        android:stateListAnimator=\"@null\"\r\n        android:text=\"Υπάρχουσα κάρτα\"\r\n        android:textAllCaps=\"false\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textSize=\"18sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.192\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.775\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/push_button19\"\r\n        android:layout_width=\"136dp\"\r\n        android:layout_height=\"77dp\"\r\n        android:background=\"@drawable/rounded_button\"\r\n        android:padding=\"15dp\"\r\n        android:stateListAnimator=\"@null\"\r\n        android:text=\"Νέα Κάρτα\"\r\n        android:textAllCaps=\"false\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textSize=\"18sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.847\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.775\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/priceView2\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:hint=\"h timi\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.563\" />\r\n\r\n    <TextView\r\n\r\n        android:id=\"@+id/indpriceview2\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:hint=\"Timi ksexwristwn\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"1.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.278\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView21\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Αριθμός τραπεζιού:\"\r\n        android:textStyle=\"italic\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.184\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.091\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView23\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Τιμή\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.788\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.185\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView22\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Προϊόντα\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.08\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.185\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/orderSuccess\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Ο λογαριασμός σας\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.507\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.064\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/listView3\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:hint=\"Ta proionta\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.082\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.279\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/payment.xml	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ app/src/main/res/layout/payment.xml	(date 1590763361249)
+@@ -13,7 +13,7 @@
+         android:textStyle="italic"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.68"
++        app:layout_constraintHorizontal_bias="0.654"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintVertical_bias="0.091" />
+@@ -73,10 +73,9 @@
+         android:id="@+id/indpriceview2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:hint="Timi ksexwristwn"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="1.0"
++        app:layout_constraintHorizontal_bias="0.734"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintVertical_bias="0.278" />
+@@ -89,7 +88,7 @@
+         android:textStyle="italic"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.184"
++        app:layout_constraintHorizontal_bias="0.309"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintVertical_bias="0.091" />
+@@ -135,7 +134,6 @@
+         android:id="@+id/listView3"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:hint="Ta proionta"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.082"
+Index: app/src/main/java/com/example/dineasy/Business.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.dineasy;\r\n\r\npublic class Business extends Business_Owner\r\n{\r\n\r\n    int bus_id;\r\n    String bus_name;\r\n    String bus_address;\r\n    int bus_phone_num;\r\n    String bus_email;\r\n    double bus_rating;\r\n    double lat,lon;\r\n\r\n    public Business (int bid, String bemail, String busername, int bphone_num, int bpassword, String bFirstname, String bLastname,int id, String name, String address, int pnum, String email, double rat,double lat,double lon)\r\n    {\r\n        super(bid,bemail,busername,bphone_num,bpassword,bFirstname,bLastname);\r\n        this.bus_id = id;\r\n        this.bus_name = name;\r\n        this.bus_address = address;\r\n        this.bus_phone_num = pnum;\r\n        this.bus_email = email;\r\n        this.bus_rating = rat;\r\n        this.lat = lat;\r\n        this.lon = lon;\r\n    }\r\n\r\n    public void setBusName(String n)\r\n    {\r\n        this.bus_name = n;\r\n    }\r\n\r\n    public void setBusAdr(String a)\r\n    {\r\n        this.bus_address = a;\r\n    }\r\n\r\n    public void setBusNum(int bn)\r\n    {\r\n        this.bus_phone_num = bn;\r\n    }\r\n\r\n    public void setBusEmail(String e)\r\n    {\r\n        this.bus_email = e;\r\n    }\r\n\r\n    public double getBusRating ()\r\n    {\r\n        return bus_rating;\r\n    }\r\n\r\n    //public void getBooking () {}\r\n\r\n    public String getBusiness () {\r\n        return bus_name;\r\n    }\r\n\r\n    public void addTable() {}\r\n    public void editTable() {}\r\n    public void changeMenu() {}\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/dineasy/Business.java	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ app/src/main/java/com/example/dineasy/Business.java	(date 1590763659868)
+@@ -1,6 +1,6 @@
+ package com.example.dineasy;
+ 
+-public class Business extends Business_Owner
++public class Business extends BusinessOwner
+ {
+ 
+     int bus_id;
+Index: app/src/main/res/layout/basic_user_after_qr.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\">\r\n\r\n    <androidx.core.widget.NestedScrollView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:fillViewport=\"true\">\r\n\r\n        <androidx.constraintlayout.widget.ConstraintLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\">\r\n\r\n            <TextView\r\n                android:id=\"@+id/textView8\"\r\n                android:layout_width=\"349dp\"\r\n                android:layout_height=\"69dp\"\r\n                android:layout_marginTop=\"104dp\"\r\n                android:text=\"Επιλογές Τραπεζιού\"\r\n                android:textColor=\"#020101\"\r\n                android:textSize=\"36sp\"\r\n                app:layout_constraintEnd_toEndOf=\"parent\"\r\n                app:layout_constraintHorizontal_bias=\"0.5\"\r\n                app:layout_constraintStart_toStartOf=\"parent\"\r\n                app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n            <Button\r\n                android:id=\"@+id/push_button\"\r\n                android:layout_width=\"277dp\"\r\n                android:layout_height=\"60dp\"\r\n                android:layout_marginTop=\"212dp\"\r\n                android:background=\"@drawable/rounded_button\"\r\n                android:onClick=\"showMenu\"\r\n                android:padding=\"15dp\"\r\n                android:stateListAnimator=\"@null\"\r\n                android:text=\"Κατάλογος\"\r\n                android:textAllCaps=\"false\"\r\n                android:textColor=\"#FFFFFF\"\r\n                android:textSize=\"18sp\"\r\n                android:textStyle=\"bold\"\r\n                app:layout_constraintEnd_toEndOf=\"parent\"\r\n                app:layout_constraintStart_toStartOf=\"parent\"\r\n                app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n            <Button\r\n                android:id=\"@+id/push_button3\"\r\n                android:layout_width=\"277dp\"\r\n                android:layout_height=\"60dp\"\r\n                android:layout_marginTop=\"424dp\"\r\n                android:background=\"@drawable/rounded_button\"\r\n                android:padding=\"15dp\"\r\n                android:stateListAnimator=\"@null\"\r\n                android:text=\"Φωνάξτε Σερβιτόρο\"\r\n                android:textAllCaps=\"false\"\r\n                android:textColor=\"#FFFFFF\"\r\n                android:textSize=\"18sp\"\r\n                android:textStyle=\"bold\"\r\n                app:layout_constraintEnd_toEndOf=\"parent\"\r\n                app:layout_constraintStart_toStartOf=\"parent\"\r\n                app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n            <TextView\r\n                android:id=\"@+id/textView9\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_marginTop=\"376dp\"\r\n                android:text=\"Δεν βρίσκετε κάτι;\"\r\n                android:textColor=\"#000000\"\r\n                android:textSize=\"18sp\"\r\n                app:layout_constraintEnd_toEndOf=\"parent\"\r\n                app:layout_constraintHorizontal_bias=\"0.757\"\r\n                app:layout_constraintStart_toStartOf=\"parent\"\r\n                app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n            <ImageButton\r\n                android:id=\"@+id/imageButton2\"\r\n                android:layout_width=\"36dp\"\r\n                android:layout_height=\"49dp\"\r\n                android:layout_marginTop=\"16dp\"\r\n                android:layout_marginEnd=\"16dp\"\r\n                android:layout_marginRight=\"16dp\"\r\n                android:background=\"#00FF0000\"\r\n                android:onClick=\"showPopup\"\r\n                android:tint=\"@android:color/primary_text_light_nodisable\"\r\n                app:layout_constraintEnd_toEndOf=\"parent\"\r\n                app:layout_constraintTop_toTopOf=\"parent\"\r\n                app:srcCompat=\"@drawable/ic_account_box_black_24dp\" />\r\n\r\n            <Button\r\n                android:id=\"@+id/push_button4\"\r\n                android:layout_width=\"169dp\"\r\n                android:layout_height=\"55dp\"\r\n                android:layout_marginTop=\"600dp\"\r\n                android:background=\"@drawable/rounded_button\"\r\n                android:onClick=\"startPayment\"\r\n                android:padding=\"15dp\"\r\n                android:stateListAnimator=\"@null\"\r\n                android:text=\"Πληρωμή\"\r\n                android:textAllCaps=\"false\"\r\n                android:textColor=\"#FFFFFF\"\r\n                android:textSize=\"18sp\"\r\n                android:textStyle=\"bold\"\r\n                app:layout_constraintEnd_toEndOf=\"parent\"\r\n                app:layout_constraintStart_toStartOf=\"parent\"\r\n                app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n            <Button\r\n                android:id=\"@+id/push_button2\"\r\n                android:layout_width=\"277dp\"\r\n                android:layout_height=\"60dp\"\r\n                android:layout_marginTop=\"304dp\"\r\n                android:background=\"@drawable/rounded_button\"\r\n                android:padding=\"15dp\"\r\n                android:stateListAnimator=\"@null\"\r\n                android:text=\"Παραγγελία\"\r\n                android:onClick=\"moveToOrder\"\r\n                android:textAllCaps=\"false\"\r\n                android:textColor=\"#FFFFFF\"\r\n                android:textSize=\"18sp\"\r\n                android:textStyle=\"bold\"\r\n                app:layout_constraintEnd_toEndOf=\"parent\"\r\n                app:layout_constraintStart_toStartOf=\"parent\"\r\n                app:layout_constraintTop_toTopOf=\"parent\" />\r\n        </androidx.constraintlayout.widget.ConstraintLayout>\r\n    </androidx.core.widget.NestedScrollView>\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/basic_user_after_qr.xml	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ app/src/main/res/layout/basic_user_after_qr.xml	(date 1590764619947)
+@@ -52,6 +52,7 @@
+                 android:layout_height="60dp"
+                 android:layout_marginTop="424dp"
+                 android:background="@drawable/rounded_button"
++                android:onClick="garson"
+                 android:padding="15dp"
+                 android:stateListAnimator="@null"
+                 android:text="Φωνάξτε Σερβιτόρο"
+Index: app/src/main/java/com/example/dineasy/Booking.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.dineasy;\r\n\r\npublic class Booking extends Basic_User{\r\n    static int booking_id;\r\n    String booking_name;\r\n    String booking_date;\r\n    String booking_time;\r\n    String booking_ppl;\r\n    int booking_phone_num;\r\n    static int counter=0;\r\n\r\n    public Booking (int id, String name,String email,int password,int phone_num, String Firstname, String Lastname, int bkid, String bkname, String bkdt, String bktm, String bkppl, int bknm)\r\n    {\r\n        super(id, name, email, password, phone_num, Firstname, Lastname);\r\n        this.booking_name=name;\r\n        this.booking_phone_num=phone_num;\r\n        counter++;\r\n        setBKID(counter);\r\n    }\r\n\r\n    public String getBKName()\r\n    {\r\n        return booking_name;\r\n    }\r\n\r\n    public void setBKID(int id)\r\n    {\r\n        this.booking_id=id;\r\n    }\r\n\r\n    public void setBKPpl(String a)\r\n    {\r\n        this.booking_ppl=a;\r\n    }\r\n\r\n    public void setBKPhone(int p)\r\n    {\r\n        this.booking_phone_num = p;\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/dineasy/Booking.java	(revision ba3ed686aef88ce088317ce825ae44c0da0f545c)
++++ app/src/main/java/com/example/dineasy/Booking.java	(date 1590763659879)
+@@ -1,6 +1,6 @@
+ package com.example.dineasy;
+ 
+-public class Booking extends Basic_User{
++public class Booking extends BasicUser {
+     static int booking_id;
+     String booking_name;
+     String booking_date;

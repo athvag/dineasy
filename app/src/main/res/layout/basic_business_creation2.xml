@@ -3,6 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="60dp"
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="4dp"
+        android:scrollbars="vertical"
+        android:background="@android:color/darker_gray"
+        />
+
+    <EditText
+        android:id="@+id/edittetxt_insert"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/recyclerView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="344dp"
+        android:layout_marginRight="344dp"
+        android:layout_marginBottom="11dp"
+        android:inputType="number"/>
+
+    <Button
+        android:id="@+id/button_insert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/recyclerView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="235dp"
+        android:layout_marginRight="235dp"
+        android:layout_marginBottom="12dp"
+        android:text="insert" />
 
     <ImageButton
         android:id="@+id/imageButton7"
@@ -27,6 +60,8 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Δημιουργία Καταστήματος" />
+        android:text="Δημιουργία Καταστήματος"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

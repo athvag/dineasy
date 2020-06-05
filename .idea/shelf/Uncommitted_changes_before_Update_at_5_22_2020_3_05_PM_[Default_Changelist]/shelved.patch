@@ -1,0 +1,207 @@
+Index: app/src/main/res/layout/login2.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/relativeLayout\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\">\r\n\r\n\r\n    <Button\r\n        android:id=\"@+id/push_button13\"\r\n        android:layout_width=\"121dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:background=\"@drawable/rounded_button\"\r\n        android:padding=\"15dp\"\r\n        android:stateListAnimator=\"@null\"\r\n        android:text=\"Σύνδεση\"\r\n        android:textAllCaps=\"false\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textSize=\"18sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.706\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/username\"\r\n        android:layout_width=\"250dp\"\r\n        android:layout_height=\"40dp\"\r\n        android:background=\"#11000000\"\r\n        android:drawableLeft=\"@drawable/ic_person_black_24dp\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Όνομα Χρήστη/E-mail\"\r\n        android:inputType=\"text\"\r\n        android:textSize=\"16dp\"\r\n        android:onClick=\"Login\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.5\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.428\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/password\"\r\n        android:layout_width=\"250dp\"\r\n        android:layout_height=\"40dp\"\r\n        android:background=\"#11000000\"\r\n        android:drawableLeft=\"@drawable/ic_lock_idle_lock\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Κωδικός\"\r\n        android:inputType=\"textPassword\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.5\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.535\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textError\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"103dp\"\r\n        android:layout_marginLeft=\"103dp\"\r\n        android:layout_marginEnd=\"57dp\"\r\n        android:layout_marginRight=\"57dp\"\r\n        android:layout_marginBottom=\"302dp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/login2.xml	(revision 9e7f1a02dec94f5b17a9958cd9a8d8f1665db1ce)
++++ app/src/main/res/layout/login2.xml	(date 1590149099500)
+@@ -35,7 +35,7 @@
+         android:hint="Όνομα Χρήστη/E-mail"
+         android:inputType="text"
+         android:textSize="16dp"
+-        android:onClick="Login"
++
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.5"
+@@ -67,11 +67,13 @@
+         android:layout_marginLeft="103dp"
+         android:layout_marginEnd="57dp"
+         android:layout_marginRight="57dp"
+-        android:layout_marginBottom="302dp"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.322"
+         app:layout_constraintLeft_toLeftOf="parent"
+         app:layout_constraintRight_toRightOf="parent"
+-        app:layout_constraintStart_toStartOf="parent" />
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.615" />
+ 
+ </androidx.constraintlayout.widget.ConstraintLayout>
+Index: app/src/main/java/com/example/dineasy/basic_user.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.dineasy;\r\n\r\nimport androidx.annotation.Nullable;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.core.app.ActivityCompat;\r\n\r\nimport android.Manifest;\r\nimport android.content.Intent;\r\nimport android.content.pm.PackageManager;\r\nimport android.os.Bundle;\r\nimport android.view.Menu;\r\nimport android.view.MenuInflater;\r\nimport android.view.MenuItem;\r\nimport android.view.View;\r\nimport android.widget.PopupMenu;\r\nimport android.widget.Toast;\r\n\r\nimport com.google.zxing.integration.android.IntentIntegrator;\r\nimport com.google.zxing.integration.android.IntentResult;\r\n\r\npublic class basic_user extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.basic_user);\r\n        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);\r\n    }\r\n    public void scanButton(View view){\r\n        IntentIntegrator intentIntegrator = new IntentIntegrator(this);\r\n        intentIntegrator.setPrompt(\"Scan the table's barcode\");\r\n        intentIntegrator.setOrientationLocked(false);\r\n        intentIntegrator.setBeepEnabled(false);\r\n        intentIntegrator.initiateScan();\r\n\r\n\r\n\r\n    }\r\n\r\n    @Override\r\n    public boolean onCreateOptionsMenu(Menu menu) {\r\n        MenuInflater inflater = getMenuInflater();\r\n        inflater.inflate(R.menu.example_menu,menu);\r\n        return true;\r\n    }\r\n\r\n    @Override\r\n    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {\r\n\r\n        IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);\r\n        String scanContent = scanningResult.getContents();\r\n        if(scanContent != null){\r\n        if(scanContent.equals (\"1234\")){\r\n\r\n               Intent intent = new Intent(basic_user.this, basic_user_after_qr.class);\r\n               startActivity(intent);\r\n           }\r\n        else{\r\n            Intent intent = new Intent(basic_user.this, basic_user.class);\r\n            startActivity(intent);\r\n        }}\r\n\r\n\r\n        super.onActivityResult(requestCode, resultCode, data);\r\n    }\r\n    public void logout(View view){\r\n        //this method will remove session and open login screen\r\n        SessionManagement sessionManagement = new SessionManagement(basic_user.this);\r\n        sessionManagement.removeSession();\r\n\r\n        moveToMainScreen();\r\n    }\r\n\r\n    private void moveToMainScreen() {\r\n        Intent intent = new Intent(basic_user.this,MainActivity.class);\r\n        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);\r\n        startActivity(intent);\r\n    }\r\n\r\n    public void showPopup(View view) {\r\n        PopupMenu popup = new PopupMenu(this, view);\r\n        popup.setOnMenuItemClickListener(this);\r\n        popup.inflate(R.menu.example_menu);\r\n        popup.show();\r\n    }\r\n\r\n    @Override\r\n    public boolean onMenuItemClick(MenuItem item) {\r\n        switch(item.getItemId()){\r\n            case R.id.item1:\r\n                SessionManagement sessionManagement = new SessionManagement(basic_user.this);\r\n                sessionManagement.removeSession();\r\n                moveToMainScreen();\r\n            default:\r\n                return false;\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/dineasy/basic_user.java	(revision 9e7f1a02dec94f5b17a9958cd9a8d8f1665db1ce)
++++ app/src/main/java/com/example/dineasy/basic_user.java	(date 1590148110663)
+@@ -27,11 +27,12 @@
+         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);
+     }
+     public void scanButton(View view){
+-        IntentIntegrator intentIntegrator = new IntentIntegrator(this);
++       /* IntentIntegrator intentIntegrator = new IntentIntegrator(this);
+         intentIntegrator.setPrompt("Scan the table's barcode");
+         intentIntegrator.setOrientationLocked(false);
+         intentIntegrator.setBeepEnabled(false);
+-        intentIntegrator.initiateScan();
++        intentIntegrator.initiateScan();*/
++        setContentView(R.layout.basic_user_after_qr);
+ 
+ 
+ 
+@@ -63,13 +64,7 @@
+ 
+         super.onActivityResult(requestCode, resultCode, data);
+     }
+-    public void logout(View view){
+-        //this method will remove session and open login screen
+-        SessionManagement sessionManagement = new SessionManagement(basic_user.this);
+-        sessionManagement.removeSession();
+ 
+-        moveToMainScreen();
+-    }
+ 
+     private void moveToMainScreen() {
+         Intent intent = new Intent(basic_user.this,MainActivity.class);
+Index: app/src/main/java/com/example/dineasy/Login.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.dineasy;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.se.omapi.Session;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.TextView;\r\n\r\npublic class Login extends AppCompatActivity {\r\n    private EditText username;\r\n    private EditText Password;\r\n    private Button Login;\r\n    private TextView Info;\r\n\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.login2);\r\n        username = (EditText) findViewById(R.id.username);\r\n        Password = (EditText) findViewById(R.id.password);\r\n        Login = (Button) findViewById(R.id.push_button13);\r\n        Info = (TextView) findViewById(R.id.textError);\r\n        Login.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n           public void onClick(View v) {\r\n                validate(username.getText().toString(),Password.getText().toString());\r\n           }\r\n      });\r\n    }\r\n\r\n    @Override\r\n    protected void onStart() {\r\n        super.onStart();\r\n\r\n       checkSession();\r\n\r\n    }\r\n\r\n    private void checkSession() {\r\n        //check if user is logged in\r\n        //if user is logged in move to basic user\r\n        SessionManagement sessionManagement = new SessionManagement(Login.this);\r\n        int userID = sessionManagement.getSession();\r\n        if(userID != -1){\r\n            //user is logged in and move to next\r\n            moveToNextActivity();\r\n        }\r\n        else{\r\n            //do nothing\r\n        }\r\n    }\r\n   private void validate(String username, String password){\r\n        if((username.equals (\"admin\")) && (password.equals  (\"1234\"))){\r\n            user user = new user(1,\"temp\");\r\n            SessionManagement sessionManagement = new SessionManagement(Login.this);\r\n            sessionManagement.saveSession(user);\r\n            //2\r\n            moveToNextActivity();\r\n      } else {\r\n       Info.setText(\"Λαθος Όνομα Χρήστη/Κωδικός.\");\r\n        }\r\n    }\r\n\r\n\r\n\r\n    private void moveToNextActivity() {\r\n        Intent intent = new Intent(Login.this,basic_user.class);\r\n        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);\r\n        startActivity(intent);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/dineasy/Login.java	(revision 9e7f1a02dec94f5b17a9958cd9a8d8f1665db1ce)
++++ app/src/main/java/com/example/dineasy/Login.java	(date 1590148460628)
+@@ -46,9 +46,11 @@
+         //if user is logged in move to basic user
+         SessionManagement sessionManagement = new SessionManagement(Login.this);
+         int userID = sessionManagement.getSession();
+-        if(userID != -1){
++        if(userID == 1){
+             //user is logged in and move to next
+             moveToNextActivity();
++        } else if (userID == 2){
++            moveToNextActivity2();
+         }
+         else{
+             //do nothing
+@@ -61,16 +63,28 @@
+             sessionManagement.saveSession(user);
+             //2
+             moveToNextActivity();
+-      } else {
++      } else if((username.equals ("user")) && (password.equals  ("1234"))){
++            user user = new user(2,"temp");
++            SessionManagement sessionManagement = new SessionManagement(Login.this);
++            sessionManagement.saveSession(user);
++            //2
++            moveToNextActivity2();
++        }
++        else {
+        Info.setText("Λαθος Όνομα Χρήστη/Κωδικός.");
+         }
+     }
+ 
+-
+-
+-    private void moveToNextActivity() {
++    private void moveToNextActivity2() {
+         Intent intent = new Intent(Login.this,basic_user.class);
+         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+         startActivity(intent);
+     }
++
++
++    private void moveToNextActivity() {
++        Intent intent = new Intent(Login.this,BasicBusiness.class);
++        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
++        startActivity(intent);
++    }
+ }
+Index: app/src/main/java/com/example/dineasy/BasicBusiness.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.dineasy;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\npublic class BasicBusiness extends AppCompatActivity {\r\n    int k = 0;\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.basic_business);\r\n        openBBC();\r\n    }\r\n\r\n    public void openBBC(){\r\n        Button btn = (Button) findViewById(R.id.push_button5);\r\n        Button btn2 = (Button) findViewById(R.id.push_button6);\r\n        btn.setOnClickListener(new View.OnClickListener(){\r\n            @Override\r\n            public void onClick(View v) {\r\n                k = 1;\r\n                setContentView(R.layout.basic_business_creation);\r\n                Button btn3 = (Button) findViewById(R.id.push_button9);\r\n                btn3.setOnClickListener(new View.OnClickListener(){\r\n                    @Override\r\n                    public void onClick(View v) {\r\n                        k = 3;\r\n                        setContentView(R.layout.basic_business_creation2);\r\n                    }\r\n                });\r\n            }\r\n        });\r\n        btn2.setOnClickListener(new View.OnClickListener(){\r\n            @Override\r\n            public void onClick(View v) {\r\n                k = 2;\r\n                setContentView(R.layout.manage_business);\r\n            }\r\n        });\r\n    }\r\n\r\n    public void onBackPressed() {\r\n        if (k == 1 || k == 2) {\r\n            k = 0;\r\n            setContentView(R.layout.basic_business);\r\n            openBBC();\r\n        }else if(k == 3){\r\n            k = 1;\r\n            setContentView(R.layout.basic_business_creation);\r\n        }\r\n        else {\r\n            super.onBackPressed();\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/dineasy/BasicBusiness.java	(revision 9e7f1a02dec94f5b17a9958cd9a8d8f1665db1ce)
++++ app/src/main/java/com/example/dineasy/BasicBusiness.java	(date 1590148032603)
+@@ -2,12 +2,16 @@
+ 
+ import android.content.Intent;
+ import android.os.Bundle;
++import android.view.Menu;
++import android.view.MenuInflater;
++import android.view.MenuItem;
+ import android.view.View;
+ import android.widget.Button;
++import android.widget.PopupMenu;
+ 
+ import androidx.appcompat.app.AppCompatActivity;
+ 
+-public class BasicBusiness extends AppCompatActivity {
++public class BasicBusiness extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+     int k = 0;
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+@@ -56,4 +60,34 @@
+             super.onBackPressed();
+         }
+     }
++    @Override
++    public boolean onCreateOptionsMenu(Menu menu) {
++        MenuInflater inflater = getMenuInflater();
++        inflater.inflate(R.menu.example_menu,menu);
++        return true;
++    }
++    public void showPopup(View view) {
++        PopupMenu popup = new PopupMenu(this, view);
++        popup.setOnMenuItemClickListener(this);
++        popup.inflate(R.menu.example_menu);
++        popup.show();
++    }
++
++    @Override
++    public boolean onMenuItemClick(MenuItem item) {
++        switch(item.getItemId()){
++            case R.id.item1:
++                SessionManagement sessionManagement = new SessionManagement(BasicBusiness.this);
++                sessionManagement.removeSession();
++                moveToMainScreen();
++
++            default:
++                return false;
++        }
++    }
++    private void moveToMainScreen() {
++        Intent intent = new Intent(BasicBusiness.this,MainActivity.class);
++        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
++        startActivity(intent);
++    }
+ }
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    package=\"com.example.dineasy\">\r\n\r\n    <uses-permission android:name=\"android.permission.CAMERA\" />\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"dineasy\"\r\n        android:roundIcon=\"@mipmap/ic_launcher\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme\">\r\n        <activity android:name=\".basic_user_after_qr\" />\r\n        <activity android:name=\".basic_user\" />\r\n        <activity android:name=\"com.journeyapps.barcodescanner.CaptureActivity\"\r\n            android:screenOrientation=\"portrait\"\r\n            tools:replace=\"screenOrientation\"/>\r\n        <activity android:name=\".Signup\" />\r\n        <activity android:name=\".Login\" />\r\n        <activity android:name=\".ManageBusiness\" />\r\n        <activity android:name=\".BusinessCreation2\" />\r\n        <activity android:name=\".BusinessCreation\" />\r\n        <activity android:name=\".BasicBusiness\" />\r\n        <activity android:name=\".MainActivity\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 9e7f1a02dec94f5b17a9958cd9a8d8f1665db1ce)
++++ app/src/main/AndroidManifest.xml	(date 1590147121431)
+@@ -19,8 +19,6 @@
+             tools:replace="screenOrientation"/>
+         <activity android:name=".Signup" />
+         <activity android:name=".Login" />
+-        <activity android:name=".ManageBusiness" />
+-        <activity android:name=".BusinessCreation2" />
+         <activity android:name=".BusinessCreation" />
+         <activity android:name=".BasicBusiness" />
+         <activity android:name=".MainActivity">

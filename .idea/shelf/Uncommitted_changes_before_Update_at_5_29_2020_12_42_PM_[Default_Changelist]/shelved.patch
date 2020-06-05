@@ -1,0 +1,47 @@
+Index: app/src/main/java/com/example/dineasy/MapsActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.dineasy;\r\n\r\nimport androidx.fragment.app.FragmentActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Toast;\r\n\r\nimport com.example.dineasy.Popup;\r\nimport com.example.dineasy.R;\r\nimport com.google.android.gms.maps.CameraUpdateFactory;\r\nimport com.google.android.gms.maps.GoogleMap;\r\nimport com.google.android.gms.maps.OnMapReadyCallback;\r\nimport com.google.android.gms.maps.SupportMapFragment;\r\nimport com.google.android.gms.maps.model.LatLng;\r\nimport com.google.android.gms.maps.model.Marker;\r\nimport com.google.android.gms.maps.model.MarkerOptions;\r\n\r\npublic class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {\r\n\r\n    private GoogleMap mMap;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_maps);\r\n        // Obtain the SupportMapFragment and get notified when the map is ready to be used.\r\n        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()\r\n                .findFragmentById(R.id.map);\r\n        mapFragment.getMapAsync(this);\r\n    }\r\n\r\n    /**\r\n     * Manipulates the map once available.\r\n     * This callback is triggered when the map is ready to be used.\r\n     * This is where we can add markers or lines, add listeners or move the camera. In this case,\r\n     * we just add a marker near Sydney, Australia.\r\n     * If Google Play services is not installed on the device, the user will be prompted to install\r\n     * it inside the SupportMapFragment. This method will only be triggered once the user has\r\n     * installed Google Play services and returned to the app.\r\n     */\r\n    @Override\r\n    public void onMapReady(GoogleMap googleMap) {\r\n        mMap = googleMap;\r\n        mMap.setMinZoomPreference(10.0f);\r\n        // Add a marker in Sydney and move the camera\r\n        LatLng sydney = new LatLng(38.392069, 23.881827);\r\n        mMap.addMarker(new MarkerOptions().position(sydney).title(\"Los Amigos\"))\r\n        ;\r\n        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));\r\n        mMap.setOnInfoWindowClickListener(this);\r\n\r\n\r\n    }\r\n\r\n    public void onInfoWindowClick(Marker marker) {\r\n        startActivity(new Intent (MapsActivity.this,Popup.class));\r\n    }\r\n\r\n    @Override\r\n    public void onPointerCaptureChanged(boolean hasCapture) {\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/dineasy/MapsActivity.java	(revision 9d76009c6687f4f78e31c05a2efbb2e98ce253bc)
++++ app/src/main/java/com/example/dineasy/MapsActivity.java	(date 1590744038753)
+@@ -29,6 +29,7 @@
+         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                 .findFragmentById(R.id.map);
+         mapFragment.getMapAsync(this);
++    
+     }
+ 
+     /**
+@@ -46,8 +47,7 @@
+         mMap.setMinZoomPreference(10.0f);
+         // Add a marker in Sydney and move the camera
+         LatLng sydney = new LatLng(38.392069, 23.881827);
+-        mMap.addMarker(new MarkerOptions().position(sydney).title("Los Amigos"))
+-        ;
++        mMap.addMarker(new MarkerOptions().position(sydney).title("Los Amigos"));
+         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+         mMap.setOnInfoWindowClickListener(this);
+ 
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05___Default_Changelist_1.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05___Default_Changelist_1.xml	(revision 9d76009c6687f4f78e31c05a2efbb2e98ce253bc)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05___Default_Changelist_1.xml	(revision 9d76009c6687f4f78e31c05a2efbb2e98ce253bc)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_22_5_2020_3_05_μμ_[Default_Changelist]1" date="1590149155441" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05_μμ_[Default_Changelist]1/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 22/5/2020 3:05 μμ [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05___Default_Changelist_.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05___Default_Changelist_.xml	(revision 9d76009c6687f4f78e31c05a2efbb2e98ce253bc)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05___Default_Changelist_.xml	(revision 9d76009c6687f4f78e31c05a2efbb2e98ce253bc)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_22_5_2020_3_05_μμ_[Default_Changelist]" date="1590149127966" recycled="false" toDelete="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_5_2020_3_05_μμ_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 22/5/2020 3:05 μμ [Default Changelist]" />
+-</changelist>
+\ No newline at end of file

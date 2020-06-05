@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -26,6 +28,7 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.basic_business);
         openBBC();
+
 
     }
 
@@ -43,6 +46,20 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
                     public void onClick(View v) {
                         k = 3;
                         setContentView(R.layout.basic_business_creation2);
+                        //TRAPEZIA//
+                        createExampleList();
+                        buildRecyclerView();
+
+                        buttonInsert = findViewById(R.id.button_insert);
+                        editTextInsert = findViewById(R.id.edittetxt_insert);
+                        buttonInsert.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                int id = Integer.parseInt(editTextInsert.getText().toString());
+                                int position = 0;
+                                insertItem(position,id);
+                            }
+                        });
                     }
                 });
             }
@@ -153,6 +170,51 @@ public class BasicBusinessActivity extends AppCompatActivity implements PopupMen
     public void setName(String name){
         SessionManagement sessionManagement = new SessionManagement(BasicBusinessActivity.this);
         sessionManagement.setSESname(name);
+    }
+    //TRAPEZIA
+    private ArrayList<TablesAdd> mExampleList;
+    private RecyclerView mRecyclerView;
+    private ExampleAdapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
+    private Button buttonInsert;
+    private EditText editTextInsert;
+
+    public void insertItem(int position,int id){
+        mExampleList.add(position, new TablesAdd(R.drawable.ic_tables,"Table ID: " + id, "Number of people:",R.drawable.ic_delete));
+        mAdapter.notifyItemInserted(position);
+        editTextInsert = findViewById(R.id.edittetxt_insert);
+        Tables t = new Tables(editTextInsert.getText().toString(),5,false);
+    }
+    public void removeItem(int position){
+        mExampleList.remove(position);
+        mAdapter.notifyItemRemoved(position);
+    }
+
+
+    public void createExampleList(){
+        mExampleList = new ArrayList<>();
+        // mExampleList.add(new ExampleItem(R.drawable.ic_tables,"Line 1","Line 2",R.drawable.ic_delete));
+        //mExampleList.add(new ExampleItem(R.drawable.ic_tables,"ΕΠΕΣΕ Ο","ΑΡΗΣ",R.drawable.ic_delete));
+    }
+    public void buildRecyclerView(){
+        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new ExampleAdapter(mExampleList);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(new ExampleAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                mExampleList.get(position);
+            }
+
+            @Override
+            public void onDeleteClick(int position) {
+                removeItem(position);
+            }
+        });
     }
  
 }
